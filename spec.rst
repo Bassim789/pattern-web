@@ -1,5 +1,5 @@
 ##################################
-Specification: Widget Textable ...
+Specification: Widget Textable Pattern-web
 ##################################
 
 
@@ -10,9 +10,8 @@ Specification: Widget Textable ...
 
 1.1 But du projet
 =================
-Créer un Widget Textable [#]_ ...
-qui a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur. 
-.. [#] Dernière version en python 2 disponible
+Créer un Widget Textable qui a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur depuis Twitter, Bing et Wikipédia. 
+Dernière version en python 2 disponible
 
 
 1.2 Aperçu des etapes
@@ -29,41 +28,48 @@ qui a pour fonction de créer un corpus textuel généré à partir d'un mot cl�
 
 .. _bassim.matar@unil.ch: mailto:bassim.matar@unil.ch
 
-    - Documentation
+    - Codage 
     - Test
+    - Gestion de projet
+
 
 * Taar Rusconi `taar.rusconi@unil.ch`_ :
 
 .. _taar.rusconi@unil.ch: mailto: taar.rusconi@unil.ch
 
-    - Specification
-    - Interface
-    - GitHub
+    - Documentation
+    - Codage
+    
     
 * Cyril Nghiem `cyril.nghiem@unil.ch`_ :
 
 .. _cyril.nghiem@unil.ch: mailto:cyril.nghiem@unil.ch
 
     - Design interface
-    - Test
+    - Codage
+    - Specification
     
 * Jean Schuwey `jean.schuwey@unil.ch`_ :
 
 .. _jean.schuwey@unil.ch: mailto:jean-schuwey@unil.ch
 
-    - blabla
-    - blabla
+    - Codage
+    - Gestion de projet
 
 * Grégory Thonney `gregory.thonney.1@unil.ch`_ :
 
 .. _gregory.thonney.1@unil.ch: mailto:gregory.thonney.1@unil.ch
 
-    - blabla
-    - blabla
+    - Documentation
+    - Specification
+    - Codage
 
 1.4 Ressources et documentations
 ==============================
-* http://www.clips.ua.ac.be/pages/pattern-web
+* Documentation de Pattern-web: http://www.clips.ua.ac.be/pages/pattern-web
+* Code source de Textable: https://bitbucket.org/langtech/orange-textable/src/ec4a228f683a2681c18104bee05e06d2e34a968d?at=master
+* Tutoriel Orange Canvas: http://orange.biolab.si/getting-started/
+* 
 
 
 2. Technique
@@ -85,7 +91,7 @@ qui a pour fonction de créer un corpus textuel généré à partir d'un mot cl�
 
 2.4 Fonctionnalités optionelles
 ===============================
-- Permettre à l'utilisateur d'entrez une clé de license pour Bing, Twitter, etc. 
+- Permettre à l'utilisateur d'entrez une clé de licence pour Bing, Twitter, etc. 
 - Indiquer à l'utilisateur le nombre de requêtes qu'il a effectées par API. 
 
 
