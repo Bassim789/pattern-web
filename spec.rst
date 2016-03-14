@@ -11,7 +11,7 @@ Specification: Widget Textable ...
 1.1 But du projet
 =================
 Créer un Widget Textable [#]_ ...
-
+Notre widget a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur. 
 .. [#] Dernière version en python 2 disponible
 
 
@@ -44,16 +44,21 @@ Créer un Widget Textable [#]_ ...
 
 .. _cyril.nghiem@unil.ch: mailto:cyril.nghiem@unil.ch
 
-    - Documentation
+    - Design interface
     - Test
     
 * Jean Schuwey `jean.schuwey@unil.ch`_ :
 
 .. _jean.schuwey@unil.ch mailto:jean-schuwey@unil.ch
 
+    - 
+    - 
+
 * Grégory Thonney `gregory.thonney.1@unil.ch`_ :
 
 .. _gregory.thonney.1@unil.ch mailto:gregory.thonney.1@unil.ch
+    - 
+    - 
 
 1.4 Ressources et documentations
 ==============================
