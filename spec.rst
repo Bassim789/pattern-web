@@ -4,7 +4,7 @@ Specification: Widget Textable ...
 
 
 
-1 Introduction test
+1 Introduction
 **************
 
 
@@ -39,6 +39,13 @@ Créer un Widget Textable [#]_ ...
     - Specification
     - Interface
     - GitHub
+    
+* Cyril Nghiem `cyril.nghiem@unil.ch`_ :
+
+.. _jean.dupont@unil.ch: mailto:jean.dupont@unil.ch
+
+    - Documentation
+    - Test
 
 
 2. Technique
