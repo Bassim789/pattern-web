@@ -25,16 +25,16 @@ Créer un Widget Textable [#]_ ...
 1.3 Equipe et responsabilitées
 ==============================
 
-* Bassim Matar
+* Bassim Matar `bassim.matar@unil.ch`_:
 
-.. bassim.matar@unil.ch: mailto:bassim.matar@unil.ch
+.. _bassim.matar@unil.ch: mailto:bassim.matar@unil.ch
 
     - Documentation
     - Test
 
-* Taar Rusconi 
+* Taar Rusconi `taar.rusconi@unil.ch`_:
 
-.. taar.rusconi@unil.ch: mailto: taar.rusconi@unil.ch
+.. _taar.rusconi@unil.ch: mailto: taar.rusconi@unil.ch
 
     - Specification
     - Interface
@@ -46,13 +46,14 @@ Créer un Widget Textable [#]_ ...
 
     - Documentation
     - Test
-* Jean Schuwey
+    
+* Jean Schuwey `jean.schuwey@unil.ch`_:
 
-.. jean.schuwey@unil.ch mailto:jean-schuwey@unil.ch
+.. _jean.schuwey@unil.ch mailto:jean-schuwey@unil.ch
 
-* Grégory Thonney
+* Grégory Thonney `gregory.thonney.1@unil.ch`_:
 
-.. gregory.thonney.1@unil.ch mailto:gregory.thonney.1@unil.ch
+.. _gregory.thonney.1@unil.ch mailto:gregory.thonney.1@unil.ch
 
 1.4 Ressources et documentations
 ==============================
