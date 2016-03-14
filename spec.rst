@@ -11,7 +11,7 @@ Specification: Widget Textable ...
 1.1 But du projet
 =================
 Créer un Widget Textable [#]_ ...
-Notre widget a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur. 
+qui a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur. 
 .. [#] Dernière version en python 2 disponible
 
 
@@ -76,24 +76,32 @@ Notre widget a pour fonction de créer un corpus textuel généré à partir d'u
 
 2.2 Fonctionnalités minimales
 =============================
-
+- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher.  
 
 2.3 Fonctionnalités principales
 ===============================
-
+- Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
+- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
 
 2.4 Fonctionnalités optionelles
 ===============================
-
+- Permettre à l'utilisateur d'entrez une clé de license pour Bing, Twitter, etc. 
+- Indiquer à l'utilisateur le nombre de requêtes qu'il a effectées par API. 
 
 
 2.5 Tests
 =========
-
+Le widget est considéré comme fonctionnel si les fonctionnalités de 2.2 à 2.4 sont remplies. 
 
 
 3. Etapes
 *********
+- Se renseigner sur les fonctionnalités de pattern et des différentes API.
+- Tester indépendemment chaque fonctionnalité du widget. 
+- Implémenter les fonctionnalités dans le widget.
+- Interface graphique.
+- Tests et correction. 
+- Etablir la documentation du widget.
 
 
 
@@ -108,9 +116,10 @@ Notre widget a pour fonction de créer un corpus textuel généré à partir d'u
 ==========================
 * Les fonctionnalités principales sont complétement prises en charge par le logiciel.
 * La documentation du logiciel est complète.
-* Le logiciel possède des routines de test de ses fonctionnalitées (principales ou optionelles.
+* Le logiciel possède des routines de test de ses fonctionnalitées (principales ou optionelles).
 
 
 4. Infrastructure
 =================
-Le projet est disponible sur GitHub à l'adresse ...
+Le projet est disponible sur GitHub à l'adresse https://github.com/Bassim789/pattern-web/
+
