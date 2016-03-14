@@ -25,16 +25,16 @@ Créer un Widget Textable [#]_ ...
 1.3 Equipe et responsabilitées
 ==============================
 
-* Jean Dupont `jean.dupont@unil.ch`_ :
+* Bassim Matar
 
-.. _jean.dupont@unil.ch: mailto:jean.dupont@unil.ch
+.. bassim.matar@unil.ch: mailto:bassim.matar@unil.ch
 
     - Documentation
     - Test
 
-* Anselme Matheux `Anselme@exemple.net`_ :
+* Taar Rusconi 
 
-.. _Anselme@exemple.net: mailto:anselme@exemple.net
+.. taar.rusconi@unil.ch: mailto: taar.rusconi@unil.ch
 
     - Specification
     - Interface
@@ -42,10 +42,21 @@ Créer un Widget Textable [#]_ ...
     
 * Cyril Nghiem `cyril.nghiem@unil.ch`_ :
 
-.. _jean.dupont@unil.ch: mailto:jean.dupont@unil.ch
+.. cyril.nghiem@unil.ch: mailto:cyril.nghiem@unil.ch
 
     - Documentation
     - Test
+* Jean Schuwey
+
+.. jean.schuwey@unil.ch mailto:jean-schuwey@unil.ch
+
+* Grégory Thonney
+
+.. gregory.thonney.1@unil.ch mailto:gregory.thonney.1@unil.ch
+
+1.4 Ressources et documentations
+==============================
+* http://www.clips.ua.ac.be/pages/pattern-web
 
 
 2. Technique
