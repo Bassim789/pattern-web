@@ -49,14 +49,14 @@ Notre widget a pour fonction de créer un corpus textuel généré à partir d'u
     
 * Jean Schuwey `jean.schuwey@unil.ch`_ :
 
-.. _jean.schuwey@unil.ch mailto:jean-schuwey@unil.ch
+.. _jean.schuwey@unil.ch: mailto:jean-schuwey@unil.ch
 
     - blabla
     - blabla
 
 * Grégory Thonney `gregory.thonney.1@unil.ch`_ :
 
-.. _gregory.thonney.1@unil.ch mailto:gregory.thonney.1@unil.ch
+.. _gregory.thonney.1@unil.ch: mailto:gregory.thonney.1@unil.ch
 
     - blabla
     - blabla
