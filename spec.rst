@@ -42,7 +42,7 @@ Créer un Widget Textable [#]_ ...
     
 * Cyril Nghiem `cyril.nghiem@unil.ch`_ :
 
-.. cyril.nghiem@unil.ch: mailto:cyril.nghiem@unil.ch
+.. _cyril.nghiem@unil.ch: mailto:cyril.nghiem@unil.ch
 
     - Documentation
     - Test
