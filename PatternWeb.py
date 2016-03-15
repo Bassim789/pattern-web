@@ -1,5 +1,5 @@
 """
-<name>PatterWeb</name>
+<name>PatternWeb</name>
 <description>Get corpus from pattern web</description>
 <icon>path_to_icon.svg</icon>
 <priority>11</priority> 
@@ -9,7 +9,7 @@
 import Orange
 from OWWidget import *
 import OWGUI
-#from pattern.web import Twitter
+from pattern.web import Twitter
 
 
 class PatternWeb(OWWidget):
@@ -19,7 +19,8 @@ class PatternWeb(OWWidget):
 
     # Widget settings declaration...
     settingsList = [
-        'integer',
+        'nb_tweet',
+        'word_to_search',
         'operation'
     ]  
     
@@ -35,7 +36,8 @@ class PatternWeb(OWWidget):
 
         #----------------------------------------------------------------------
         # Settings and other attribute initializations...
-        self.integer = 0
+        self.nb_tweet = 3
+        self.word_to_search = ''
         self.autoSend = True     
         self.loadSettings()
         
@@ -46,10 +48,20 @@ class PatternWeb(OWWidget):
         # User interface...
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
+
+        OWGUI.lineEdit(
+                widget              = optionsBox,
+                master              = self,
+                value               = 'word_to_search',
+                orientation         = 'horizontal',
+                label               = u'Recherche:',
+                labelWidth          = 131,
+        )
+
         OWGUI.spin(
             widget=optionsBox,          
             master=self, 
-            value='integer',
+            value='nb_tweet',
             label='Nombre de tweet:',
             tooltip='Select a number of tweet.',
             min= 1, 
@@ -81,27 +93,23 @@ class PatternWeb(OWWidget):
         twitter = Twitter()
         tweets = []
         for tweet in twitter.search(search, start=1, count=nb):
-            tweets.append(tweet.text.encode('utf-8'))
+            tweets.append(tweet.text)
         return tweets
         
 
     def sendData(self):
         """Compute result of widget processing and send to output"""
-        # Important: if input data is None, propagate this value to output...
-        
-        result = 'test tweet'
-
-
-        for tweet in self.get_tweets('suisse', 3):
-            result = tweet + '\n\n'
+  
+        result = ''
+        for tweet in self.get_tweets(self.word_to_search, self.nb_tweet):
+            result += tweet + '\n\n'
 
         self.infoLine.setText(
             '%s' % (result)
         )
-        self.send('Integer', result)
+        self.send('Text data', result, self)
 
             
-
 
 if __name__=='__main__':
     myApplication = QApplication(sys.argv)
