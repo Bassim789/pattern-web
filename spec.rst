@@ -78,6 +78,7 @@ Dernière version en python 2 disponible
 
 2.1 Mock-up de l'interface
 ==========================
+.. image:: interface.png
 
 
 2.2 Fonctionnalités minimales
