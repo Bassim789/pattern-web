@@ -69,6 +69,7 @@ Dernière version en python 2 disponible
 * Documentation de Pattern-web: http://www.clips.ua.ac.be/pages/pattern-web
 * Code source de Textable: https://bitbucket.org/langtech/orange-textable/src/ec4a228f683a2681c18104bee05e06d2e34a968d?at=master
 * Tutoriel Orange Canvas: http://orange.biolab.si/getting-started/
+* Orange Widgets Development: http://orange.biolab.si/docs/latest/extend-widgets/rst/
 
 
 2. Technique
