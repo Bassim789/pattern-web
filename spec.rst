@@ -78,7 +78,8 @@ Dernière version en python 2 disponible
 
 2.1 Mock-up de l'interface
 ==========================
-.. image:: interface.png
+.. image:: interface0.2.png
+.. image:: interface0.2adv.png
 
 Remarques:
     - si on ajoute un moteur de recherche? Comment faire?
