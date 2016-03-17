@@ -80,6 +80,14 @@ Dernière version en python 2 disponible
 ==========================
 .. image:: interface.png
 
+Remarques: 
+- si on ajoute un moteur de recherche? Comment faire?
+- si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
+- Il manque deux choses:
+    - les options standars (output, segmentation label)
+    - infobox
+- Qu'a-t-on en tête pour advance settings? 
+
 
 2.2 Fonctionnalités minimales
 =============================
@@ -90,7 +98,7 @@ Dernière version en python 2 disponible
 - Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
 - Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
 
-2.4 Fonctionnalités optionelles
+2.4 Fonctionnalités optionnelles
 ===============================
 - Permettre à l'utilisateur d'entrez une clé de licence pour Bing, Twitter, etc. 
 - Indiquer à l'utilisateur le nombre de requêtes qu'il a effectées par API. 
