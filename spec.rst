@@ -80,7 +80,7 @@ Dernière version en python 2 disponible
 ==========================
 .. image:: interface.png
 
-Remarques: 
+Remarques
 - si on ajoute un moteur de recherche? Comment faire?
 - si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
 - Il manque deux choses:
@@ -91,12 +91,20 @@ Remarques:
 
 2.2 Fonctionnalités minimales
 =============================
-- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher.  
+- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
+
+Remarques
+- Préciser que chaque tweet est placé dans un segment et quelle est la sortie. 
 
 2.3 Fonctionnalités principales
 ===============================
 - Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
 - Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
+
+Remarques
+- plus de précision! Qu'est-ce qui constitue un segment? Qu'est-ce qui est associé à ce segment? Attention à Wikipédia qui renvoie des sections.
+- Préciser que l'on peut faire plusieurs sélection à la fois et comment cela se passe.
+- Inclure la fonction d'affichage des retweets. 
 
 2.4 Fonctionnalités optionnelles
 ===============================
@@ -108,15 +116,18 @@ Remarques:
 =========
 Le widget est considéré comme fonctionnel si les fonctionnalités de 2.2 à 2.4 sont remplies. 
 
+Remarque
+- Un peu du foutage de gueule. Il faut aller plus dans le détail (si je fais ceci, j'obtiens ceci). 
+
 
 3. Etapes
 *********
 - Se renseigner sur les fonctionnalités de pattern et des différentes API.
-- Tester indépendemment chaque fonctionnalité du widget. 
+- Tester indépendemment chaque fonctionnalité du widget. (préciser que c'est hors d'Orange)
 - Implémenter les fonctionnalités dans le widget.
-- Interface graphique.
+- Interface graphique. (peut se faire en parallèle) 
 - Tests et correction. 
-- Etablir la documentation du widget.
+- Etablir la documentation du widget. (aussi faire cela en parallèle). 
 
 
 
