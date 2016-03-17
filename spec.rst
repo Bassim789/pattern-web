@@ -80,28 +80,26 @@ Dernière version en python 2 disponible
 ==========================
 .. image:: interface.png
 
-..  
-    PLUSIERUS A LA FOIS?
-    (PENSEZ A POUVOIR AUGMENTER LES OPTIONS)
-    (OPTIONS PAR TYPE SELECTIONNE)
+Remarques:
+    - si on ajoute un moteur de recherche? Comment faire?
+    - si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
+    - Il manque deux choses:
+        - les options standars (output, segmentation label)
+        - infobox
+    - Qu'a-t-on en tête pour advance settings? 
 
-    VARIABLES PAR DEFAULT TEXTABLE? (NOM DE LA SEGMENTATION)
-
-    ADVANCED SETTINGS?
 
 2.2 Fonctionnalités minimales
 =============================
-- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher.  
-..
-    OUTPUT ? (SEGMENTATION ANNOTATIONS)
+- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. Le texte est segmenté en fonction du tweet (1 tweet = 1 segment). L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
 
 2.3 Fonctionnalités principales
 ===============================
-- Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
-- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
+- Permettre à l'utilisateur de générer un corpus de texte depuis les sections de la page Wikipédia du mot-clé utilisé. Chaque section représente un segment. 
+- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
+- Permettre à l'utilisateur de choisir, s'il sélectionne twitter, d'inclure ou non les retweets.
+- Permettre à l'utilisateur de sélectionner plusieurs moteurs de recherche à la fois.
 
-..
-    OUTPUT ? (SEGMENTATION ANNOTATIONS)
 
 2.4 Fonctionnalités optionnelles
 ===============================
@@ -111,21 +109,21 @@ Dernière version en python 2 disponible
 
 2.5 Tests
 =========
-Le widget est considéré comme fonctionnel si les fonctionnalités de 2.2 à 2.4 sont remplies. 
-..
-    + TESTS AUTOMATIQUES
+Le widget est considéré comme fonctionnel si:
+    - L'utilisateur peut entrer un mot clé dans le widget et choisir si le corpus sera généré par Twitter, Bing et/ou Wikipédia.
+    - Il envoie en sortie un corpus de texte segmenté selon le moteur de recherche puis segmenté selon les tweets, sections, entrées.
+
+
 
 3. Etapes
 *********
 - Se renseigner sur les fonctionnalités de pattern et des différentes API.
-- Tester indépendemment chaque fonctionnalité du widget. 
-..
-    DANS PYTHON SCRIPT ? OU JUSTE PYTHON ?
-..    
-    -    En parallel:
-* Implémenter les fonctionnalités dans le widget.
-* Interface graphique.
+- Tester indépendemment chaque fonctionnalité du widget hors d'Orange Canvas.
+- Implémenter les fonctionnalités dans le widget.
 - Tests et correction. 
+
+En parallèle: 
+- Interface graphique
 - Etablir la documentation du widget.
 
 
