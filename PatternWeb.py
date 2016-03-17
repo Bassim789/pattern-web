@@ -9,8 +9,12 @@
 import Orange
 from OWWidget import *
 import OWGUI
+
 from pattern.web import Twitter
 
+from _textable.widgets.LTTL.Segmentation import Segmentation
+from _textable.widgets.LTTL.Input import Input
+from _textable.widgets.LTTL.Segmenter import Segmenter
 
 class PatternWeb(OWWidget):
     """Orange widget to get corpus from pattern web"""
@@ -31,8 +35,11 @@ class PatternWeb(OWWidget):
 
         #----------------------------------------------------------------------
         # Channel definitions...
-        self.inputs = [('Integer', str, 'debut')]     
-        self.outputs = [('Integer', int)]
+        #self.inputs = [('Integer', str, 'debut')]     
+        #self.outputs = [('Text data', Segmentation)]
+        self.outputs = [('Text data', Segmentation)]
+
+        
 
         #----------------------------------------------------------------------
         # Settings and other attribute initializations...
@@ -99,15 +106,22 @@ class PatternWeb(OWWidget):
 
     def sendData(self):
         """Compute result of widget processing and send to output"""
-  
+
         result = ''
+        result_list = []
+
         for tweet in self.get_tweets(self.word_to_search, self.nb_tweet):
             result += tweet + '\n\n'
+            result_list.append(Input(tweet))
 
         self.infoLine.setText(
             '%s' % (result)
         )
-        self.send('Text data', result, self)
+
+        segmenter = Segmenter()
+        out_object = segmenter.concatenate(result_list)
+
+        self.send('Text data', out_object, self)
 
             
 
