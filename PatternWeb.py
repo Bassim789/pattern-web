@@ -100,26 +100,36 @@ class PatternWeb(OWWidget):
         twitter = Twitter()
         tweets = []
         for tweet in twitter.search(search, start=1, count=nb):
-            tweets.append(tweet.text)
+            tweet_input = Input(tweet.text)
+            annotations = {
+            	'source' : 'Twitter',
+		        'author': tweet.author,
+		        'date': tweet.date,
+		        'url': tweet.url,
+		        'search' : search,
+		    }
+            tweet_input.segments[0].annotations.update(annotations)
+            tweets.append(tweet_input)
         return tweets
         
 
     def sendData(self):
         """Compute result of widget processing and send to output"""
 
-        result = ''
-        result_list = []
+        segments = []
 
-        for tweet in self.get_tweets(self.word_to_search, self.nb_tweet):
-            result += tweet + '\n\n'
-            result_list.append(Input(tweet))
+        # add tweets
+        segments += self.get_tweets(
+        	self.word_to_search,
+        	self.nb_tweet
+        )
 
         self.infoLine.setText(
-            '%s' % (result)
+            '%i segments' % (len(segments))
         )
 
         segmenter = Segmenter()
-        out_object = segmenter.concatenate(result_list)
+        out_object = segmenter.concatenate(segments)
 
         self.send('Text data', out_object, self)
 
