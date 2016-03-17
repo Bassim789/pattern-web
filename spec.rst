@@ -80,13 +80,13 @@ Dernière version en python 2 disponible
 ==========================
 .. image:: interface.png
 
-Remarques
-- si on ajoute un moteur de recherche? Comment faire?
-- si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
-- Il manque deux choses:
-    - les options standars (output, segmentation label)
-    - infobox
-- Qu'a-t-on en tête pour advance settings? 
+Remarques:
+    - si on ajoute un moteur de recherche? Comment faire?
+    - si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
+    - Il manque deux choses:
+        - les options standars (output, segmentation label)
+        - infobox
+    - Qu'a-t-on en tête pour advance settings? 
 
 
 2.2 Fonctionnalités minimales
@@ -94,7 +94,7 @@ Remarques
 - Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
 
 Remarques
-- Préciser que chaque tweet est placé dans un segment et quelle est la sortie. 
+    - Préciser que chaque tweet est placé dans un segment et quelle est la sortie. 
 
 2.3 Fonctionnalités principales
 ===============================
