@@ -98,7 +98,7 @@ Remarques:
 - Permettre à l'utilisateur de générer un corpus de texte depuis les sections de la page Wikipédia du mot-clé utilisé. Chaque section représente un segment. 
 - Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
 - Permettre à l'utilisateur de choisir, s'il sélectionne twitter, d'inclure ou non les retweets.
-- Permettre à l'utilisateur de sélectionner plusieurs API à la fois. Ce qui créera une segmentation supplémentaire en fonction du moteur de recherche choisi. 
+- Permettre à l'utilisateur de sélectionner plusieurs moteurs de recherche à la fois.
 
 
 2.4 Fonctionnalités optionnelles
