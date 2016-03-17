@@ -80,17 +80,30 @@ Dernière version en python 2 disponible
 ==========================
 .. image:: interface.png
 
+..  
+    PLUSIERUS A LA FOIS?
+    (PENSEZ A POUVOIR AUGMENTER LES OPTIONS)
+    (OPTIONS PAR TYPE SELECTIONNE)
+
+    VARIABLES PAR DEFAULT TEXTABLE? (NOM DE LA SEGMENTATION)
+
+    ADVANCED SETTINGS?
 
 2.2 Fonctionnalités minimales
 =============================
 - Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher.  
+..
+    OUTPUT ? (SEGMENTATION ANNOTATIONS)
 
 2.3 Fonctionnalités principales
 ===============================
 - Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
 - Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
 
-2.4 Fonctionnalités optionelles
+..
+    OUTPUT ? (SEGMENTATION ANNOTATIONS)
+
+2.4 Fonctionnalités optionnelles
 ===============================
 - Permettre à l'utilisateur d'entrez une clé de licence pour Bing, Twitter, etc. 
 - Indiquer à l'utilisateur le nombre de requêtes qu'il a effectées par API. 
@@ -99,14 +112,19 @@ Dernière version en python 2 disponible
 2.5 Tests
 =========
 Le widget est considéré comme fonctionnel si les fonctionnalités de 2.2 à 2.4 sont remplies. 
-
+..
+    + TESTS AUTOMATIQUES
 
 3. Etapes
 *********
 - Se renseigner sur les fonctionnalités de pattern et des différentes API.
 - Tester indépendemment chaque fonctionnalité du widget. 
-- Implémenter les fonctionnalités dans le widget.
-- Interface graphique.
+..
+    DANS PYTHON SCRIPT ? OU JUSTE PYTHON ?
+..    
+    -    En parallel:
+* Implémenter les fonctionnalités dans le widget.
+* Interface graphique.
 - Tests et correction. 
 - Etablir la documentation du widget.
 
