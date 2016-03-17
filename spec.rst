@@ -91,20 +91,15 @@ Remarques:
 
 2.2 Fonctionnalités minimales
 =============================
-- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
-
-Remarques
-    - Préciser que chaque tweet est placé dans un segment et quelle est la sortie. 
+- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. Le texte est segmenté en fonction du tweet (1 tweet = 1 segment). L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
 
 2.3 Fonctionnalités principales
 ===============================
-- Permettre à l'utilisateur de générer un corpus de texte depuis le contenu de la page Wikipédia du mot-clé utilisé. 
-- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé. 
+- Permettre à l'utilisateur de générer un corpus de texte depuis les sections de la page Wikipédia du mot-clé utilisé. Chaque section représente un segment. 
+- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
+- Permettre à l'utilisateur de choisir, s'il sélectionne twitter, d'inclure ou non les retweets.
+- Permettre à l'utilisateur de sélectionner plusieurs API à la fois. Ce qui créera une segmentation supplémentaire en fonction du moteur de recherche choisi. 
 
-Remarques
-- plus de précision! Qu'est-ce qui constitue un segment? Qu'est-ce qui est associé à ce segment? Attention à Wikipédia qui renvoie des sections.
-- Préciser que l'on peut faire plusieurs sélection à la fois et comment cela se passe.
-- Inclure la fonction d'affichage des retweets. 
 
 2.4 Fonctionnalités optionnelles
 ===============================
@@ -114,20 +109,22 @@ Remarques
 
 2.5 Tests
 =========
-Le widget est considéré comme fonctionnel si les fonctionnalités de 2.2 à 2.4 sont remplies. 
+Le widget est considéré comme fonctionnel si:
+    - L'utilisateur peut entrer un mot clé dans le widget et choisir si le corpus sera généré par Twitter, Bing et/ou Wikipédia.
+    - Il envoie en sortie un corpus de texte segmenté selon le moteur de recherche puis segmenté selon les tweets, sections, entrées.
 
-Remarque
-- Un peu du foutage de gueule. Il faut aller plus dans le détail (si je fais ceci, j'obtiens ceci). 
 
 
 3. Etapes
 *********
 - Se renseigner sur les fonctionnalités de pattern et des différentes API.
-- Tester indépendemment chaque fonctionnalité du widget. (préciser que c'est hors d'Orange)
+- Tester indépendemment chaque fonctionnalité du widget hors d'Orange Canvas.
 - Implémenter les fonctionnalités dans le widget.
-- Interface graphique. (peut se faire en parallèle) 
 - Tests et correction. 
-- Etablir la documentation du widget. (aussi faire cela en parallèle). 
+
+En parallèle: 
+- Interface graphique
+- Etablir la documentation du widget.
 
 
 
