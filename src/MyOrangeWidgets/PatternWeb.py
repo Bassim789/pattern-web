@@ -18,7 +18,7 @@ from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
 
-class PatternWeb(OWWidget):
+class OWPatternWeb(OWWidget):
     """Orange widget to get corpus from pattern web"""
     
 
