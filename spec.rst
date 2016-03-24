@@ -145,5 +145,5 @@ En parallèle:
 
 4. Infrastructure
 =================
-Le projet est disponible sur GitHub à l'adresse https://github.com/Bassim789/pattern-web/
+Le projet est disponible sur GitHub à l'adresse https://github.com/Bassim789/textable-pattern-web/
 
