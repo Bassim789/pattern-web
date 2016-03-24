@@ -81,14 +81,6 @@ Dernière version en python 2 disponible
 .. image:: img/interface0.2.png
 .. image:: img/interface0.2adv.png
 
-Remarques:
-    - si on ajoute un moteur de recherche? Comment faire?
-    - si on sélectionne plusieurs moteurs de recherche? Comment cela se ségmente? 
-    - Il manque deux choses:
-        - les options standars (output, segmentation label)
-        - infobox
-    - Qu'a-t-on en tête pour advance settings? 
-
 
 2.2 Fonctionnalités minimales
 =============================
