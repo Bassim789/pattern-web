@@ -5,6 +5,8 @@
 <priority>11</priority> 
 """
 
+__version__ = '0.0.1'
+
 # Standard imports...
 import Orange
 from OWWidget import *
@@ -133,7 +135,19 @@ class PatternWeb(OWWidget):
 
         self.send('Text data', out_object, self)
 
-            
+    def getSettings(self, *args, **kwargs):
+        """Read settings, taking into account version number (overriden)"""
+        settings = OWWidget.getSettings(self, *args, **kwargs)
+        settings["settingsDataVersion"] = __version__.split('.')[:2]
+        return settings
+
+    def setSettings(self, settings):
+        """Write settings, taking into account version number (overriden)"""
+        if settings.get("settingsDataVersion", None) \
+                == __version__.split('.')[:2]:
+            settings = settings.copy()
+            del settings["settingsDataVersion"]
+            OWWidget.setSettings(self, settings)
 
 if __name__=='__main__':
     myApplication = QApplication(sys.argv)
