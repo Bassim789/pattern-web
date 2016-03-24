@@ -1,7 +1,7 @@
 """
 <name>PatternWeb</name>
 <description>Get corpus from pattern web</description>
-<icon>path_to_icon.svg</icon>
+<icon>icons/icon_p.png</icon>
 <priority>11</priority> 
 """
 
