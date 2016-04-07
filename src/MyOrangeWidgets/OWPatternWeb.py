@@ -32,6 +32,7 @@ class OWPatternWeb(OWWidget):
         'word_to_search',
         'operation',
         'displayAdvancedSettings',
+        'licenseKey'
     ]  
     
     def __init__(self, parent=None, signalManager=None):
@@ -53,6 +54,7 @@ class OWPatternWeb(OWWidget):
         self.word_to_search = ''
         self.autoSend = True  
         self.displayAdvancedSettings = False
+        self.licenseKey = ""
 
         # Always end Textable widget settings with the following 3 lines...
         self.uuid = None
@@ -90,48 +92,27 @@ class OWPatternWeb(OWWidget):
         # immediately after it...
         self.advancedSettings.draw()
 
-        # Filter box (advanced settings only)
-        filterBox = OWGUI.widgetBox(
+        # key box (advanced settings only)
+        keyBox = OWGUI.widgetBox(
             widget=self.controlArea,
-            box=u'Filter',
+            box=u'Web service license key',
             orientation='vertical',
         )
 
-        filterCriterionCombo = OWGUI.comboBox(
-            widget=filterBox,
+        keyBoxCombo = OWGUI.lineEdit(
+            widget=keyBox,
             master=self,
-            value='nb_tweet',
-            items=[u'author', u'year', u'genre'],
-            sendSelectedValue=True,
+            value='licenseKey',
             orientation='horizontal',
-            label=u'Criterion:',
+            label=u'License key:',
             labelWidth=180,
-            callback=self.sendButton.settingsChanged,
-            tooltip=(
-                u"Tool\n"
-                u"tips."
-            ),
         )
-        filterCriterionCombo.setMinimumWidth(120)
-        OWGUI.separator(widget=filterBox, height=3)
-        self.FilterValueCombo = OWGUI.comboBox(
-            widget=filterBox,
-            master=self,
-            value='nb_tweet',
-            orientation='horizontal',
-            label=u'Value:',
-            labelWidth=180,
-            callback=self.sendButton.settingsChanged,
-            tooltip=(
-                u"Tool\n"
-                u"tips."
-            ),
-        )
+        
 
 
-        # The following lines add filterBox (and a vertical separator) to the
+        # The following lines add keyBox (and a vertical separator) to the
         # advanced interface...
-        self.advancedSettings.advancedWidgets.append(filterBox)
+        self.advancedSettings.advancedWidgets.append(keyBox)
         self.advancedSettings.advancedWidgetsAppendSeparator()
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
