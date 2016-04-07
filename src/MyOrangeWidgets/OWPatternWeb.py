@@ -12,7 +12,7 @@ import Orange
 from OWWidget import *
 import OWGUI
 
-from pattern.web import Twitter
+from pattern.web import Twitter, Wikipedia
 
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
@@ -24,15 +24,16 @@ from _textable.widgets.TextableUtils import *
 class OWPatternWeb(OWWidget):
     """Orange widget to get corpus from pattern web"""
     
-
-
     # Widget settings declaration...
     settingsList = [
         'nb_tweet',
         'word_to_search',
         'operation',
         'displayAdvancedSettings',
-        'licenseKey'
+        'licenseKey',
+        'service',
+        'wiki_section',
+        'wiki_type_of_text'
     ]  
     
     def __init__(self, parent=None, signalManager=None):
@@ -52,9 +53,12 @@ class OWPatternWeb(OWWidget):
         # Settings and other attribute initializations...
         self.nb_tweet = 3
         self.word_to_search = ''
-        self.autoSend = True  
+        self.autoSend = False 
         self.displayAdvancedSettings = False
         self.licenseKey = ""
+        self.service = u'Twitter'
+        self.wiki_section = True
+        self.wiki_type_of_text = u'Plain text'
 
         # Always end Textable widget settings with the following 3 lines...
         self.uuid = None
@@ -116,18 +120,39 @@ class OWPatternWeb(OWWidget):
         self.advancedSettings.advancedWidgetsAppendSeparator()
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
+        self.twitterBox = OWGUI.widgetBox(self.controlArea, 'Twitter')
+        self.wikipediaBox = OWGUI.widgetBox(self.controlArea, 'Wikipedia')
+
+        self.serviceBoxes = [self.twitterBox, self.wikipediaBox]
+
+
+        OWGUI.comboBox(
+            widget              = optionsBox,
+            master              = self,
+            value               = 'service',
+            items               = [u'Twitter', u'Wikipedia'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Service:',
+            labelWidth          = 130,
+            callback            = self.set_service_box_visibility,
+            tooltip             = (
+                    u"Select a service."
+            ),
+        )
+
 
         OWGUI.lineEdit(
-                widget              = optionsBox,
-                master              = self,
-                value               = 'word_to_search',
-                orientation         = 'horizontal',
-                label               = u'Recherche:',
-                labelWidth          = 131,
+            widget              = optionsBox,
+            master              = self,
+            value               = 'word_to_search',
+            orientation         = 'horizontal',
+            label               = u'Recherche:',
+            labelWidth          = 131,
         )
 
         OWGUI.spin(
-            widget=optionsBox,          
+            widget=self.twitterBox,          
             master=self, 
             value='nb_tweet',
             label='Nombre de tweet:',
@@ -136,6 +161,37 @@ class OWPatternWeb(OWWidget):
             max= 100, 
             step=1,
         )
+
+        OWGUI.comboBox(
+            widget              = self.wikipediaBox,
+            master              = self,
+            value               = 'wiki_section',
+            items               = [u'Yes', u'No'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Separate in section:',
+            labelWidth          = 130,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Select wiki section separation."
+            ),
+        )
+
+        OWGUI.comboBox(
+            widget              = self.wikipediaBox,
+            master              = self,
+            value               = 'wiki_type_of_text',
+            items               = [u'Plain text', u'Html'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Type of text:',
+            labelWidth          = 130,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Select type of text."
+            ),
+        )
+
 
 
         # OWGUI.button(
@@ -148,6 +204,8 @@ class OWPatternWeb(OWWidget):
         # Now Info box and Send button must be drawn...
         self.infoBox.draw()
         self.sendButton.draw()
+
+        self.set_service_box_visibility()
         
 
         # Send data if autoSend.
@@ -158,7 +216,6 @@ class OWPatternWeb(OWWidget):
 
 
     def get_tweets(self, search, nb):
-        
         twitter = Twitter()
         tweets = []
         for tweet in twitter.search(search, start=1, count=nb):
@@ -173,18 +230,54 @@ class OWPatternWeb(OWWidget):
             tweet_input.segments[0].annotations.update(annotations)
             tweets.append(tweet_input)
         return tweets
-        
+    
+    def get_wiki_article(self, search, separate_in_section=u'Yes', type_of_text=u'Plain text'):
+        segments = []
+        article = Wikipedia().search(search, cached=False)
+        if article:
+            if separate_in_section == u'Yes':
+                for section in article.sections:
+                    if type_of_text == u'Plain text':
+                        wiki_article = Input(section.string)
+                    else:
+                        wiki_article = Input(section.html)
+
+                    annotations = {
+                        'source' : 'Wikipedia',
+                        'section title': section.title,
+                        'section level': section.level,
+                        'search' : search,
+                    }
+                    wiki_article.segments[0].annotations.update(annotations)
+                    segments.append(wiki_article)
+            else:
+                if type_of_text == u'Plain text':
+                    wiki_article = Input(article.string)
+                else:
+                    wiki_article = Input(article.html)
+                annotations = {
+                        'source' : 'Wikipedia',
+                        'search' : search,
+                    }
+                wiki_article.segments[0].annotations.update(annotations)
+                segments.append(wiki_article)
+        return segments
 
     def sendData(self):
         """Compute result of widget processing and send to output"""
 
-        segments = []
+        if self.service == u'Twitter':
+            segments = self.get_tweets(
+                self.word_to_search,
+                self.nb_tweet
+            )
 
-        # add tweets
-        segments += self.get_tweets(
-            self.word_to_search,
-            self.nb_tweet
-        )
+        elif self.service == u'Wikipedia':
+            segments = self.get_wiki_article(
+                self.word_to_search,
+                self.wiki_section,
+                self.wiki_type_of_text
+            )
 
         message = u'%i segment@p.' % len(segments)
         message = pluralize(message, len(segments))
@@ -201,6 +294,19 @@ class OWPatternWeb(OWWidget):
             self.advancedSettings.setVisible(True)
         else:
             self.advancedSettings.setVisible(False)
+
+
+    def set_service_box_visibility(self):
+        for serviceBox in self.serviceBoxes:
+            serviceBox.setVisible(False)
+
+        if self.service == u'Twitter':
+            self.twitterBox.setVisible(True)
+
+        elif self.service == u'Wikipedia':
+            self.wikipediaBox.setVisible(True)
+
+        #self.infoBox.dataSent('Debug: ' + self.service)
             
 
     def getSettings(self, *args, **kwargs):
@@ -222,4 +328,4 @@ if __name__=='__main__':
     myWidget = PatternWeb()
     myWidget.show()
     myApplication.exec_()
-    
+
