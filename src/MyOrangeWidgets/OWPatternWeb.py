@@ -20,6 +20,7 @@ from _textable.widgets.LTTL.Segmenter import Segmenter
 
 from _textable.widgets.TextableUtils import *
 
+
 class OWPatternWeb(OWWidget):
     """Orange widget to get corpus from pattern web"""
     
@@ -50,9 +51,13 @@ class OWPatternWeb(OWWidget):
         # Settings and other attribute initializations...
         self.nb_tweet = 3
         self.word_to_search = ''
-        self.autoSend = True     
-        self.loadSettings()
+        self.autoSend = True  
         self.displayAdvancedSettings = False
+
+        # Always end Textable widget settings with the following 3 lines...
+        self.uuid = None
+        self.loadSettings()
+        self.uuid = getWidgetUuid(self)
         
         self.inputData = None   # NB: not a setting.
 
@@ -84,6 +89,50 @@ class OWPatternWeb(OWWidget):
         # Advanced settings checkbox (basic/advanced interface will appear 
         # immediately after it...
         self.advancedSettings.draw()
+
+        # Filter box (advanced settings only)
+        filterBox = OWGUI.widgetBox(
+            widget=self.controlArea,
+            box=u'Filter',
+            orientation='vertical',
+        )
+
+        filterCriterionCombo = OWGUI.comboBox(
+            widget=filterBox,
+            master=self,
+            value='nb_tweet',
+            items=[u'author', u'year', u'genre'],
+            sendSelectedValue=True,
+            orientation='horizontal',
+            label=u'Criterion:',
+            labelWidth=180,
+            callback=self.sendButton.settingsChanged,
+            tooltip=(
+                u"Tool\n"
+                u"tips."
+            ),
+        )
+        filterCriterionCombo.setMinimumWidth(120)
+        OWGUI.separator(widget=filterBox, height=3)
+        self.FilterValueCombo = OWGUI.comboBox(
+            widget=filterBox,
+            master=self,
+            value='nb_tweet',
+            orientation='horizontal',
+            label=u'Value:',
+            labelWidth=180,
+            callback=self.sendButton.settingsChanged,
+            tooltip=(
+                u"Tool\n"
+                u"tips."
+            ),
+        )
+
+
+        # The following lines add filterBox (and a vertical separator) to the
+        # advanced interface...
+        self.advancedSettings.advancedWidgets.append(filterBox)
+        self.advancedSettings.advancedWidgetsAppendSeparator()
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
 
@@ -108,19 +157,20 @@ class OWPatternWeb(OWWidget):
         )
 
 
-        OWGUI.button(
-            widget=optionsBox,
-            master=self,
-            label='Get tweet',
-            callback=self.sendData,
-        )
+        # OWGUI.button(
+        #     widget=optionsBox,
+        #     master=self,
+        #     label='Get tweet',
+        #     callback=self.sendData,
+        # )
         
-        infoBox = OWGUI.widgetBox(self.controlArea, u'Info')
-        self.infoLine = OWGUI.widgetLabel( # NB: using self here enables us to
-                                           # access the label in other methods.
-            widget=infoBox,              
-            label='No input.',
-        )
+        # Now Info box and Send button must be drawn...
+        self.infoBox.draw()
+        self.sendButton.draw()
+        
+
+        # Send data if autoSend.
+        self.sendButton.sendIf()
 
         self.resize(10, 10)
         
@@ -155,9 +205,9 @@ class OWPatternWeb(OWWidget):
             self.nb_tweet
         )
 
-        self.infoLine.setText(
-            '%i segments' % (len(segments))
-        )
+        message = u'%i segment@p.' % len(segments)
+        message = pluralize(message, len(segments))
+        self.infoBox.dataSent(message)
 
         segmenter = Segmenter()
         out_object = segmenter.concatenate(segments)
@@ -171,8 +221,6 @@ class OWPatternWeb(OWWidget):
         else:
             self.advancedSettings.setVisible(False)
             
-        if len(self.titleLabels) > 0:
-            self.selectedTitleLabels = self.selectedTitleLabels
 
     def getSettings(self, *args, **kwargs):
         """Read settings, taking into account version number (overriden)"""
