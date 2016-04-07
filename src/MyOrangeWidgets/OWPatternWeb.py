@@ -27,7 +27,8 @@ class OWPatternWeb(OWWidget):
     settingsList = [
         'nb_tweet',
         'word_to_search',
-        'operation'
+        'operation',
+        'displayAdvancedSettings',
     ]  
     
     def __init__(self, parent=None, signalManager=None):
@@ -49,12 +50,26 @@ class OWPatternWeb(OWWidget):
         self.word_to_search = ''
         self.autoSend = True     
         self.loadSettings()
+        self.displayAdvancedSettings = False
         
         self.inputData = None   # NB: not a setting.
 
-        
+        # The AdvancedSettings class, also from TextableUtils, facilitates
+        # the management of basic vs. advanced interface. An object from this 
+        # class (here assigned to self.advancedSettings) contains two lists 
+        # (basicWidgets and advanceWidgets), to which the corresponding
+        # widgetBoxes must be added.
+        self.advancedSettings = AdvancedSettings(
+            widget=self.controlArea,
+            master=self,
+            callback=self.sendButton.settingsChanged,
+        )
         #----------------------------------------------------------------------
         # User interface...
+        
+        # Advanced settings checkbox (basic/advanced interface will appear 
+        # immediately after it...
+        self.advancedSettings.draw()
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
 
@@ -134,6 +149,16 @@ class OWPatternWeb(OWWidget):
         out_object = segmenter.concatenate(segments)
 
         self.send('Text data', out_object, self)
+        
+    def updateGUI(self):  # si advanced settings est coche, alors cela l'affiche. 
+        """Update GUI state"""
+        if self.displayAdvancedSettings:
+            self.advancedSettings.setVisible(True)
+        else:
+            self.advancedSettings.setVisible(False)
+            
+        if len(self.titleLabels) > 0:
+            self.selectedTitleLabels = self.selectedTitleLabels
 
     def getSettings(self, *args, **kwargs):
         """Read settings, taking into account version number (overriden)"""
