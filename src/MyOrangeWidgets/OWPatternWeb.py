@@ -18,6 +18,8 @@ from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
 
+from _textable.widgets.TextableUtils import *
+
 class OWPatternWeb(OWWidget):
     """Orange widget to get corpus from pattern web"""
     
@@ -53,6 +55,18 @@ class OWPatternWeb(OWWidget):
         self.displayAdvancedSettings = False
         
         self.inputData = None   # NB: not a setting.
+
+        # Next two instructions are helpers from TextableUtils. Corresponding
+        # interface elements are declared here and actually drawn below (at
+        # their position in the UI)...
+        self.infoBox = InfoBox(widget=self.controlArea)
+        self.sendButton = SendButton(
+            widget=self.controlArea,
+            master=self,
+            callback=self.sendData,
+            infoBoxAttribute='infoBox',
+            sendIfPreCallback=self.updateGUI,
+        )
 
         # The AdvancedSettings class, also from TextableUtils, facilitates
         # the management of basic vs. advanced interface. An object from this 
@@ -119,12 +133,12 @@ class OWPatternWeb(OWWidget):
         for tweet in twitter.search(search, start=1, count=nb):
             tweet_input = Input(tweet.text)
             annotations = {
-            	'source' : 'Twitter',
-		        'author': tweet.author,
-		        'date': tweet.date,
-		        'url': tweet.url,
-		        'search' : search,
-		    }
+                'source' : 'Twitter',
+                'author': tweet.author,
+                'date': tweet.date,
+                'url': tweet.url,
+                'search' : search,
+            }
             tweet_input.segments[0].annotations.update(annotations)
             tweets.append(tweet_input)
         return tweets
@@ -137,8 +151,8 @@ class OWPatternWeb(OWWidget):
 
         # add tweets
         segments += self.get_tweets(
-        	self.word_to_search,
-        	self.nb_tweet
+            self.word_to_search,
+            self.nb_tweet
         )
 
         self.infoLine.setText(
