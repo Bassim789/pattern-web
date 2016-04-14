@@ -28,6 +28,7 @@ class OWPatternWeb(OWWidget):
     settingsList = [
         'nb_tweet',
         'word_to_search',
+        'autoSend',
         'operation',
         'displayAdvancedSettings',
         'licenseKey',
@@ -57,7 +58,7 @@ class OWPatternWeb(OWWidget):
         self.displayAdvancedSettings = False
         self.licenseKey = ""
         self.service = u'Twitter'
-        self.wiki_section = True
+        self.wiki_section = u'Yes'
         self.wiki_type_of_text = u'Plain text'
 
         # Always end Textable widget settings with the following 3 lines...
