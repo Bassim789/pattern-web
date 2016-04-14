@@ -365,7 +365,7 @@ class OWPatternWeb(OWWidget):
 
 if __name__=='__main__':
     myApplication = QApplication(sys.argv)
-    myWidget = PatternWeb()
+    myWidget = OWPatternWeb()
     myWidget.show()
     myApplication.exec_()
 
