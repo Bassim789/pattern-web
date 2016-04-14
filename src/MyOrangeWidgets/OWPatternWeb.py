@@ -12,7 +12,7 @@ import Orange
 from OWWidget import *
 import OWGUI
 
-from pattern.web import Twitter, Wikipedia
+from pattern.web import Twitter, Wikipedia, Bing, SEARCH
 
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
@@ -35,6 +35,7 @@ class OWPatternWeb(OWWidget):
         'service',
         'wiki_section',
         'wiki_type_of_text'
+        'nb_entry'
     ]  
     
     def __init__(self, parent=None, signalManager=None):
@@ -60,6 +61,7 @@ class OWPatternWeb(OWWidget):
         self.service = u'Twitter'
         self.wiki_section = u'Yes'
         self.wiki_type_of_text = u'Plain text'
+        self.nb_entry = 5
 
         # Always end Textable widget settings with the following 3 lines...
         self.uuid = None
@@ -123,15 +125,16 @@ class OWPatternWeb(OWWidget):
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
         self.twitterBox = OWGUI.widgetBox(self.controlArea, 'Twitter')
         self.wikipediaBox = OWGUI.widgetBox(self.controlArea, 'Wikipedia')
+        self.bingBox = OWGUI.widgetBox(self.controlArea, 'Bing')
 
-        self.serviceBoxes = [self.twitterBox, self.wikipediaBox]
+        self.serviceBoxes = [self.twitterBox, self.wikipediaBox, self.bingBox]
 
 
         OWGUI.comboBox(
             widget              = optionsBox,
             master              = self,
             value               = 'service',
-            items               = [u'Twitter', u'Wikipedia'],
+            items               = [u'Twitter', u'Wikipedia', u'Bing'],
             sendSelectedValue   = True,
             orientation         = 'horizontal',
             label               = u'Service:',
@@ -191,6 +194,17 @@ class OWPatternWeb(OWWidget):
             tooltip             = (
                     u"Select type of text."
             ),
+        )
+
+        OWGUI.spin(
+            widget=self.bingBox,          
+            master=self, 
+            value='nb_entry',
+            label='Number of entries:',
+            tooltip='Select a number of entry.',
+            min= 1, 
+            max= 100, 
+            step=1,
         )
 
 
@@ -264,6 +278,21 @@ class OWPatternWeb(OWWidget):
                 segments.append(wiki_article)
         return segments
 
+    def get_entries(self, search, nb):
+        bing = Bing()
+        entries = []
+        for result in bing.search(search, start=1, count=nb):
+            entry_input = Input(result.text)
+            annotations = {
+                'source' : 'Bing',
+                'title': result.title,
+                'url': result.url,
+                'search' : search,
+            }
+            entry_input.segments[0].annotations.update(annotations)
+            entries.append(entry_input)
+        return entries
+
     def sendData(self):
         """Compute result of widget processing and send to output"""
 
@@ -278,6 +307,12 @@ class OWPatternWeb(OWWidget):
                 self.word_to_search,
                 self.wiki_section,
                 self.wiki_type_of_text
+            )
+
+        elif self.service == u'Bing':
+            segments = self.get_entries(
+                self.word_to_search,
+                self.nb_entry
             )
 
         message = u'%i segment@p.' % len(segments)
@@ -306,6 +341,10 @@ class OWPatternWeb(OWWidget):
 
         elif self.service == u'Wikipedia':
             self.wikipediaBox.setVisible(True)
+
+        elif self.service == u'Bing':
+            self.bingBox.setVisible(True)
+
 
         #self.infoBox.dataSent('Debug: ' + self.service)
             
