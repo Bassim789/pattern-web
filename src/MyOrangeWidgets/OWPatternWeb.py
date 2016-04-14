@@ -35,7 +35,8 @@ class OWPatternWeb(OWWidget):
         'service',
         'wiki_section',
         'wiki_type_of_text'
-        'nb_entry'
+        'nb_bing_entry'
+        'language'
     ]  
     
     def __init__(self, parent=None, signalManager=None):
@@ -61,7 +62,8 @@ class OWPatternWeb(OWWidget):
         self.service = u'Twitter'
         self.wiki_section = u'Yes'
         self.wiki_type_of_text = u'Plain text'
-        self.nb_entry = 5
+        self.nb_bing_entry = 5
+        self.language = 'en'
 
         # Always end Textable widget settings with the following 3 lines...
         self.uuid = None
@@ -78,8 +80,8 @@ class OWPatternWeb(OWWidget):
             widget=self.controlArea,
             master=self,
             callback=self.sendData,
-            infoBoxAttribute='infoBox',
-            sendIfPreCallback=self.updateGUI,
+            sendIfPreCallback= self.updateGUI,
+            infoBoxAttribute='infoBox'
         )
 
         # The AdvancedSettings class, also from TextableUtils, facilitates
@@ -90,7 +92,7 @@ class OWPatternWeb(OWWidget):
         self.advancedSettings = AdvancedSettings(
             widget=self.controlArea,
             master=self,
-            callback=self.sendButton.settingsChanged,
+            callback=self.toggle_AdvancedSettingg
         )
         #----------------------------------------------------------------------
         # User interface...
@@ -115,6 +117,20 @@ class OWPatternWeb(OWWidget):
             labelWidth=180,
         )
         
+        OWGUI.comboBox(
+            widget              = keyBox,
+            master              = self,
+            value               = 'language',
+            items               = ['en', 'fr'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Language:',
+            labelWidth          = 130,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Select language."
+            ),
+        )
 
 
         # The following lines add keyBox (and a vertical separator) to the
@@ -152,6 +168,7 @@ class OWPatternWeb(OWWidget):
             value               = 'word_to_search',
             orientation         = 'horizontal',
             label               = u'Query:',
+            callback            = self.sendButton.settingsChanged,
             labelWidth          = 131,
         )
 
@@ -161,6 +178,7 @@ class OWPatternWeb(OWWidget):
             value='nb_tweet',
             label='Number of tweets:',
             tooltip='Select a number of tweet.',
+            callback= self.sendButton.settingsChanged,
             min= 1, 
             max= 100, 
             step=1,
@@ -199,9 +217,10 @@ class OWPatternWeb(OWWidget):
         OWGUI.spin(
             widget=self.bingBox,          
             master=self, 
-            value='nb_entry',
+            value='nb_bing_entry',
             label='Number of entries:',
             tooltip='Select a number of entry.',
+            callback= self.sendButton.settingsChanged,
             min= 1, 
             max= 100, 
             step=1,
@@ -231,7 +250,7 @@ class OWPatternWeb(OWWidget):
 
 
     def get_tweets(self, search, nb):
-        twitter = Twitter()
+        twitter = Twitter(language=self.language)
         tweets = []
         for tweet in twitter.search(search, start=1, count=nb):
             tweet_input = Input(tweet.text)
@@ -248,7 +267,7 @@ class OWPatternWeb(OWWidget):
     
     def get_wiki_article(self, search, separate_in_section=u'Yes', type_of_text=u'Plain text'):
         segments = []
-        article = Wikipedia().search(search, cached=False)
+        article = Wikipedia(language=self.language).search(search, cached=False)
         if article:
             if separate_in_section == u'Yes':
                 for section in article.sections:
@@ -278,10 +297,10 @@ class OWPatternWeb(OWWidget):
                 segments.append(wiki_article)
         return segments
 
-    def get_entries(self, search, nb):
-        bing = Bing()
+    def get_bing_entries(self, search, nb):
+        bing = Bing(language=self.language)
         entries = []
-        for result in bing.search(search, start=1, count=nb):
+        for result in bing.search(search, start=1, count=nb, cached=False):
             entry_input = Input(result.text)
             annotations = {
                 'source' : 'Bing',
@@ -310,9 +329,9 @@ class OWPatternWeb(OWWidget):
             )
 
         elif self.service == u'Bing':
-            segments = self.get_entries(
+            segments = self.get_bing_entries(
                 self.word_to_search,
-                self.nb_entry
+                self.nb_bing_entry
             )
 
         message = u'%i segment@p.' % len(segments)
@@ -326,6 +345,17 @@ class OWPatternWeb(OWWidget):
         
     def updateGUI(self):  # si advanced settings est coche, alors cela l'affiche. 
         """Update GUI state"""
+        if self.displayAdvancedSettings:
+            self.advancedSettings.setVisible(True)
+        else:
+            self.advancedSettings.setVisible(False)
+
+        self.infoBox.customMessage(u'Setting changed. click send.')
+
+        if self.autoSend:
+            self.sendData()
+
+    def toggle_AdvancedSettingg(self):
         if self.displayAdvancedSettings:
             self.advancedSettings.setVisible(True)
         else:
@@ -345,6 +375,7 @@ class OWPatternWeb(OWWidget):
         elif self.service == u'Bing':
             self.bingBox.setVisible(True)
 
+        self.updateGUI()
 
         #self.infoBox.dataSent('Debug: ' + self.service)
             
@@ -368,4 +399,3 @@ if __name__=='__main__':
     myWidget = OWPatternWeb()
     myWidget.show()
     myApplication.exec_()
-
