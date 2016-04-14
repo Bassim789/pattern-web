@@ -99,7 +99,7 @@ class OWPatternWeb(OWWidget):
         # key box (advanced settings only)
         keyBox = OWGUI.widgetBox(
             widget=self.controlArea,
-            box=u'Web service license key',
+            box=u'',
             orientation='vertical',
         )
 
@@ -147,7 +147,7 @@ class OWPatternWeb(OWWidget):
             master              = self,
             value               = 'word_to_search',
             orientation         = 'horizontal',
-            label               = u'Recherche:',
+            label               = u'Query:',
             labelWidth          = 131,
         )
 
@@ -155,7 +155,7 @@ class OWPatternWeb(OWWidget):
             widget=self.twitterBox,          
             master=self, 
             value='nb_tweet',
-            label='Nombre de tweet:',
+            label='Number of tweets:',
             tooltip='Select a number of tweet.',
             min= 1, 
             max= 100, 
@@ -169,7 +169,7 @@ class OWPatternWeb(OWWidget):
             items               = [u'Yes', u'No'],
             sendSelectedValue   = True,
             orientation         = 'horizontal',
-            label               = u'Separate in section:',
+            label               = u'Separate in sections:',
             labelWidth          = 130,
             callback            = self.sendButton.settingsChanged,
             tooltip             = (
