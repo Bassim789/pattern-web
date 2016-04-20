@@ -54,7 +54,7 @@ class OWPatternWeb(OWWidget):
 
         #----------------------------------------------------------------------
         # Settings and other attribute initializations...
-        self.nb_tweet = 3
+        self.nb_tweet = 50
         self.word_to_search = ''
         self.autoSend = False 
         self.displayAdvancedSettings = False
@@ -62,7 +62,7 @@ class OWPatternWeb(OWWidget):
         self.service = u'Twitter'
         self.wiki_section = u'Yes'
         self.wiki_type_of_text = u'Plain text'
-        self.nb_bing_entry = 5
+        self.nb_bing_entry = 50
         self.language = 'en'
 
         # Always end Textable widget settings with the following 3 lines...
@@ -203,7 +203,7 @@ class OWPatternWeb(OWWidget):
             widget              = self.wikipediaBox,
             master              = self,
             value               = 'wiki_type_of_text',
-            items               = [u'Plain text', u'Html'],
+            items               = [u'Plain text', u'HTML'],
             sendSelectedValue   = True,
             orientation         = 'horizontal',
             label               = u'Type of text:',
@@ -219,7 +219,7 @@ class OWPatternWeb(OWWidget):
             master=self, 
             value='nb_bing_entry',
             label='Number of entries:',
-            tooltip='Select a number of entry.',
+            tooltip='Select a number of entries.',
             callback= self.sendButton.settingsChanged,
             min= 1, 
             max= 100, 
