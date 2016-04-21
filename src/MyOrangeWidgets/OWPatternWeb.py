@@ -119,16 +119,6 @@ class OWPatternWeb(OWWidget):
             label=u'License key:',
             labelWidth=180,
         )
-
-        segment_label_input = OWGUI.lineEdit(
-            widget=advanceBox,
-            master=self,
-            value='segment_label',
-            orientation='horizontal',
-            label=u'Output segmentation label:',
-            labelWidth=180,
-            callback=self.sendButton.settingsChanged,
-        )
         
         OWGUI.comboBox(
             widget              = advanceBox,
@@ -183,6 +173,16 @@ class OWPatternWeb(OWWidget):
             label               = u'Query:',
             callback            = self.sendButton.settingsChanged,
             labelWidth          = 131,
+        )
+        
+        segment_label_input = OWGUI.lineEdit(
+            widget=optionsBox,
+            master=self,
+            value='segment_label',
+            orientation='horizontal',
+            label=u'Output segmentation label:',
+            labelWidth=180,
+            callback=self.sendButton.settingsChanged,
         )
 
         OWGUI.spin(
