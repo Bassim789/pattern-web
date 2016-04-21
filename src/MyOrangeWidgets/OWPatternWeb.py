@@ -26,6 +26,7 @@ class OWPatternWeb(OWWidget):
     
     # Widget settings declaration...
     settingsList = [
+        'segment_label',
         'nb_tweet',
         'word_to_search',
         'autoSend',
@@ -54,6 +55,7 @@ class OWPatternWeb(OWWidget):
 
         #----------------------------------------------------------------------
         # Settings and other attribute initializations...
+        self.segment_label = u'PatternWeb_data'
         self.nb_tweet = 50
         self.word_to_search = ''
         self.autoSend = False 
@@ -103,23 +105,33 @@ class OWPatternWeb(OWWidget):
         self.advancedSettings.draw()
 
         # key box (advanced settings only)
-        keyBox = OWGUI.widgetBox(
+        advanceBox = OWGUI.widgetBox(
             widget=self.controlArea,
             box=u'',
             orientation='vertical',
         )
 
-        keyBoxCombo = OWGUI.lineEdit(
-            widget=keyBox,
+        keyInput = OWGUI.lineEdit(
+            widget=advanceBox,
             master=self,
             value='licenseKey',
             orientation='horizontal',
             label=u'License key:',
             labelWidth=180,
         )
+
+        segment_label_input = OWGUI.lineEdit(
+            widget=advanceBox,
+            master=self,
+            value='segment_label',
+            orientation='horizontal',
+            label=u'Output segmentation label:',
+            labelWidth=180,
+            callback=self.sendButton.settingsChanged,
+        )
         
         OWGUI.comboBox(
-            widget              = keyBox,
+            widget              = advanceBox,
             master              = self,
             value               = 'language',
             items               = ['en', 'fr'],
@@ -136,7 +148,7 @@ class OWPatternWeb(OWWidget):
 
         # The following lines add keyBox (and a vertical separator) to the
         # advanced interface...
-        self.advancedSettings.advancedWidgets.append(keyBox)
+        self.advancedSettings.advancedWidgets.append(advanceBox)
         self.advancedSettings.advancedWidgetsAppendSeparator()
         
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
@@ -349,7 +361,7 @@ class OWPatternWeb(OWWidget):
         self.infoBox.dataSent(message)
 
         segmenter = Segmenter()
-        out_object = segmenter.concatenate(segments)
+        out_object = segmenter.concatenate(segments, self.segment_label)
         a = 0
         while a < 50:
             progressBar.advance()   # 1 tick on the progress bar...
