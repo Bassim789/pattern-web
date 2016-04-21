@@ -351,7 +351,7 @@ class OWPatternWeb(OWWidget):
         segmenter = Segmenter()
         out_object = segmenter.concatenate(segments)
         a = 0
-        while a <= 50:
+        while a < 50:
             progressBar.advance()   # 1 tick on the progress bar...
             a += 1
 
