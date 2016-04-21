@@ -11,7 +11,7 @@ Specification: Widget Textable Pattern-web
 1.1 But du projet
 =================
 Créer un Widget Textable qui a pour fonction de créer un corpus textuel généré à partir d'un mot clé donné par l'utilisateur depuis Twitter, Bing et Wikipédia. 
-Dernière version en python 2 disponible
+Dernière version en Python 2 disponible
 
 
 1.2 Aperçu des etapes
@@ -90,15 +90,15 @@ Dernière version en python 2 disponible
 2.3 Fonctionnalités principales
 ===============================
 - Permettre à l'utilisateur de générer un corpus de texte depuis les sections de la page Wikipédia du mot-clé utilisé. Chaque section représente un segment. 
-- Avec Bing, permettre à l'utilisateur d'avoir un coprus textuel généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
-- Permettre à l'utilisateur de choisir, s'il sélectionne twitter, d'inclure ou non les retweets.
+- Avec Bing, permettre à l'utilisateur d'avoir un corpus textuel (sous forme du résumé de l'URL) généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
 - Permettre à l'utilisateur de sélectionner plusieurs moteurs de recherche à la fois.
 
 
 2.4 Fonctionnalités optionnelles
 ===============================
 - Permettre à l'utilisateur d'entrez une clé de licence pour Bing, Twitter, etc. 
-- Indiquer à l'utilisateur le nombre de requêtes qu'il a effectées par API. 
+- Indiquer à l'utilisateur le nombre de requêtes restantes à effectuer par API. 
+- Avec Twitter, possibilité d'inclure ou non les retweets.
 
 
 2.5 Tests
