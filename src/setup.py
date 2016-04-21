@@ -8,6 +8,7 @@ setup(
     install_requires=[
         'Orange>=2.1,<3',
         'Orange-Textable>=1.5.2',
+        'Pattern>=2.6',
     ],
     author='B. Matar, C. Nghiem, T. Rusconi, J. Schuwey  et G. Thonney',
     license='GNU General Public License v3 (GPLv3)',
