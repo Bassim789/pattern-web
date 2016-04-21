@@ -360,6 +360,8 @@ class OWPatternWeb(OWWidget):
 
         self.send('Text data', out_object, self)
         
+        self.sendButton.resetSettingsChangedFlag()
+        
     def updateGUI(self):  # si advanced settings est coche, alors cela l'affiche. 
         """Update GUI state"""
         if self.displayAdvancedSettings:
@@ -369,8 +371,8 @@ class OWPatternWeb(OWWidget):
 
         self.infoBox.customMessage(u'Setting changed. Click send.')
 
-        if self.autoSend:
-            self.sendData()
+        #if self.autoSend:
+        #    self.sendData()
 
     def toggle_AdvancedSettingg(self):
         if self.displayAdvancedSettings:
@@ -380,6 +382,8 @@ class OWPatternWeb(OWWidget):
 
 
     def set_service_box_visibility(self):
+        self.sendButton.settingsChanged()
+        
         for serviceBox in self.serviceBoxes:
             serviceBox.setVisible(False)
 
