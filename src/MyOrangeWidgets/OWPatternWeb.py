@@ -327,28 +327,29 @@ class OWPatternWeb(OWWidget):
 
     def sendData(self):
         """Compute result of widget processing and send to output"""
-
+        # Clear created Inputs.
+        self.clearCreatedInputs()
+        
         if self.service == u'Twitter':
-            segments = self.get_tweets(
+            createdInputs = self.get_tweets(
                 self.word_to_search,
                 self.nb_tweet
             )
 
         elif self.service == u'Wikipedia':
-            segments = self.get_wiki_article(
+            createdInputs = self.get_wiki_article(
                 self.word_to_search,
                 self.wiki_section,
                 self.wiki_type_of_text
             )
 
         elif self.service == u'Bing':
-            segments = self.get_bing_entries(
+            createdInputs = self.get_bing_entries(
                 self.word_to_search,
                 self.nb_bing_entry
             )
 
-        # Clear created Inputs.
-        self.clearCreatedInputs()
+        
 
         # Initialize progress bar.
         progressBar = OWGUI.ProgressBar(
@@ -356,12 +357,12 @@ class OWPatternWeb(OWWidget):
             iterations=50
         )
 
-        message = u'%i segment@p.' % len(segments)
-        message = pluralize(message, len(segments))
+        message = u'%i segment@p.' % len(createdInputs)
+        message = pluralize(message, len(createdInputs))
         self.infoBox.dataSent(message)
 
         segmenter = Segmenter()
-        out_object = segmenter.concatenate(segments, self.segment_label)
+        out_object = segmenter.concatenate(createdInputs, self.segment_label)
         a = 0
         while a < 50:
             progressBar.advance()   # 1 tick on the progress bar...
