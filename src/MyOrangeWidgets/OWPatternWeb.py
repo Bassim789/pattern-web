@@ -28,6 +28,7 @@ class OWPatternWeb(OWWidget):
     settingsList = [
         'segment_label',
         'nb_tweet',
+        'include_RT',
         'word_to_search',
         'autoSend',
         'operation',
@@ -57,6 +58,7 @@ class OWPatternWeb(OWWidget):
         # Settings and other attribute initializations...
         self.segment_label = u'PatternWeb_data'
         self.nb_tweet = 50
+        self.include_RT = u'No'
         self.word_to_search = ''
         self.autoSend = False 
         self.displayAdvancedSettings = False
@@ -198,6 +200,21 @@ class OWPatternWeb(OWWidget):
         )
 
         OWGUI.comboBox(
+            widget              = self.twitterBox,
+            master              = self,
+            value               = 'include_RT',
+            items               = [u'Yes', u'No'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Include RT:',
+            labelWidth          = 130,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Include re-tweets or not."
+            ),
+        )
+
+        OWGUI.comboBox(
             widget              = self.wikipediaBox,
             master              = self,
             value               = 'wiki_section',
@@ -262,20 +279,36 @@ class OWPatternWeb(OWWidget):
         
 
 
-    def get_tweets(self, search, nb):
+    def get_tweets(self, search, nb, include_RT=u'No'):
         twitter = Twitter(language=self.language)
         tweets = []
-        for tweet in twitter.search(search, start=1, count=nb):
-            tweet_input = Input(tweet.text)
-            annotations = {
-                'source' : 'Twitter',
-                'author': tweet.author,
-                'date': tweet.date,
-                'url': tweet.url,
-                'search' : search,
-            }
-            tweet_input.segments[0].annotations.update(annotations)
-            tweets.append(tweet_input)
+        if include_RT == u'No':
+            for tweet in twitter.search(search, start=1, count=nb*3):
+                if not tweet.text.startswith('RT'):
+                    tweet_input = Input(tweet.text)
+                    annotations = {
+                        'source' : 'Twitter',
+                        'author': tweet.author,
+                        'date': tweet.date,
+                        'url': tweet.url,
+                        'search' : search,
+                    }
+                    tweet_input.segments[0].annotations.update(annotations)
+                    tweets.append(tweet_input)
+                if len(tweets)==nb:
+                    break
+        else:        
+            for tweet in twitter.search(search, start=1, count=nb):
+                tweet_input = Input(tweet.text)
+                annotations = {
+                    'source' : 'Twitter',
+                    'author': tweet.author,
+                    'date': tweet.date,
+                    'url': tweet.url,
+                    'search' : search,
+                }
+                tweet_input.segments[0].annotations.update(annotations)
+                tweets.append(tweet_input)
         return tweets
     
     def get_wiki_article(self, search, separate_in_section=u'Yes', type_of_text=u'Plain text'):
@@ -333,7 +366,8 @@ class OWPatternWeb(OWWidget):
         if self.service == u'Twitter':
             createdInputs = self.get_tweets(
                 self.word_to_search,
-                self.nb_tweet
+                self.nb_tweet,
+                self.include_RT
             )
 
         elif self.service == u'Wikipedia':
