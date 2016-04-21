@@ -362,7 +362,7 @@ class OWPatternWeb(OWWidget):
         self.infoBox.dataSent(message)
 
         segmenter = Segmenter()
-        out_object = segmenter.concatenate(createdInputs, self.segment_label)
+        out_object = segmenter.concatenate(createdInputs, self.segment_label, import_labels_as=None)
         a = 0
         while a < 50:
             progressBar.advance()   # 1 tick on the progress bar...
