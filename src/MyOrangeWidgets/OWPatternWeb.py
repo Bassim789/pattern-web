@@ -338,12 +338,25 @@ class OWPatternWeb(OWWidget):
         # Clear created Inputs.
         self.clearCreatedInputs()
 
+        # Initialize progress bar.
+        progressBar = OWGUI.ProgressBar(
+            self, 
+            iterations=50
+        )
+
         message = u'%i segment@p.' % len(segments)
         message = pluralize(message, len(segments))
         self.infoBox.dataSent(message)
 
         segmenter = Segmenter()
         out_object = segmenter.concatenate(segments)
+        a = 0
+        while a <= 50:
+            progressBar.advance()   # 1 tick on the progress bar...
+            a += 1
+
+        # Clear progress bar.
+        progressBar.finish()
 
         self.send('Text data', out_object, self)
         
