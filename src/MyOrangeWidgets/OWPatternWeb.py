@@ -64,6 +64,7 @@ class OWPatternWeb(OWWidget):
         self.wiki_type_of_text = u'Plain text'
         self.nb_bing_entry = 50
         self.language = 'en'
+        self.createdInputs = list()
 
         # Always end Textable widget settings with the following 3 lines...
         self.uuid = None
@@ -334,6 +335,9 @@ class OWPatternWeb(OWWidget):
                 self.nb_bing_entry
             )
 
+        # Clear created Inputs.
+        self.clearCreatedInputs()
+
         message = u'%i segment@p.' % len(segments)
         message = pluralize(message, len(segments))
         self.infoBox.dataSent(message)
@@ -393,6 +397,20 @@ class OWPatternWeb(OWWidget):
             settings = settings.copy()
             del settings["settingsDataVersion"]
             OWWidget.setSettings(self, settings)
+
+    def clearCreatedInputs(self):
+        """Delete all Input objects that have been created."""
+        # Delete strings...
+        for i in self.createdInputs:
+            i.clear()
+        # Empty list of created inputs.
+        del self.createdInputs[:]
+        # Delete those created inputs that are at the end of the string store.
+        for i in reversed(xrange(len(Segmentation.data))):
+            if Segmentation.data[i] is None:
+                Segmentation.data.pop(i)
+            else:
+                break
 
 if __name__=='__main__':
     myApplication = QApplication(sys.argv)
