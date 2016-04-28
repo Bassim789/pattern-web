@@ -13,9 +13,9 @@ Outputs : WebSearch_data
 **************
 The WebSearch widget is designed for the Orange Canvas environment to generate textual data retrieved from Twitter, Wikipedia or Bing. 
 Depending on the service, the output segmentation has the following annotations with keys :
-*Twitter : date, source, search, url and author.
-*Wikipedia : source and search.
-*Bing : url, source, search and title.
+- Twitter : date, source, search, url and author.
+- Wikipedia : source and search.
+- Bing : url, source, search and title.
 
 The interface of WebSearch adapts itself to the selected service. Advanced settings  
 
@@ -26,9 +26,8 @@ The interface of WebSearch adapts itself to the selected service. Advanced setti
 1.3 Equipe et responsabilitées
 ==============================
 
-* Bassim Matar `bassim.matar@unil.ch`_ :
+* sdgsd
 
-.. _bassim.matar@unil.ch: mailto:bassim.matar@unil.ch
+.. _jhjhj
 
-    - Codage 
-    - Test
+    - jhj
