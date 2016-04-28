@@ -1,7 +1,7 @@
 """
 <name>WebSearch</name>
 <description>Get corpus from Wikipedia, Twitter and Bing</description>
-<icon>icons/icon_p.png</icon>
+<icon>icons/icon_WebSearch_transpa.png</icon>
 <priority>11</priority> 
 """
 
