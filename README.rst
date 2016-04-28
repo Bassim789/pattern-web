@@ -32,13 +32,13 @@ img
 
 3. Message
 **************
-Setting changed. Click send.
+"*Setting changed. Click send.*"
 This message informs the user that th settings have been changed and are ready to be sent. 
 
-Data correctly sent to output: <n> segments.
+"*Data correctly sent to output: <n> segments.*"
 The data, comprises of <n> number of segments has been sent to the output correctly.
 
-No data sent to output:
+"*No data sent to output.*"
 The search didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
 
 
