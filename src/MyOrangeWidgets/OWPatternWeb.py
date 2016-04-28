@@ -416,7 +416,7 @@ class OWPatternWeb(OWWidget):
         else:
             self.advancedSettings.setVisible(False)
 
-        self.infoBox.customMessage(u'Setting changed. Click send.')
+        #self.infoBox.customMessage(u'Setting changed. Click send.')
 
         #if self.autoSend:
         #    self.sendData()
