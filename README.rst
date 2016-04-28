@@ -18,7 +18,7 @@ Depending on the service, the output segmentation has the following annotations 
 * Wikipedia : source and search.
 * Bing : url, source, search and title.
 
-The interface of WebSearch adapts itself to the selected service. In case the Advanced settings checkbox is selected, more options are revealed.
+The interface of WebSearch adapts itself to the selected service. In case the **Advanced settings** checkbox is selected, more options are revealed.
 
 2.1 Basic Interface
 **************
@@ -27,18 +27,18 @@ img
 
 2.2 Advanced Interface
 **************
-Once the Advanced settings checkbox is selected, a new box reveals itself on top of the window. It enables the user to enter a License key and choose the language of the retrieved data. 
+Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to enter a License key and choose the Language of the retrieved data. 
 img
 
 3. Message
 **************
-"*Setting changed. Click send.*"
+*Setting changed. Click send.*
 This message informs the user that th settings have been changed and are ready to be sent. 
 
-"*Data correctly sent to output: <n> segments.*"
+*Data correctly sent to output: <n> segments.*
 The data, comprises of <n> number of segments has been sent to the output correctly.
 
-"*No data sent to output.*"
+*No data sent to output.*
 The search didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
 
 
