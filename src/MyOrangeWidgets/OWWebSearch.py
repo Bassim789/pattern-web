@@ -118,7 +118,7 @@ class OWWebSearch(OWWidget):
         # key box (advanced settings only)
         advanceBox = OWGUI.widgetBox(
             widget=self.controlArea,
-            box=u' ',
+            box=True,
             orientation='vertical',
         )
 
