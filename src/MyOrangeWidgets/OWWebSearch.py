@@ -5,19 +5,15 @@
 <priority>11</priority> 
 """
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
-# Standard imports...
 import Orange
 from OWWidget import *
 import OWGUI
-
 from pattern.web import Twitter, Wikipedia, Bing, SEARCH
-
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
-
 from _textable.widgets.TextableUtils import *
 
 
@@ -33,7 +29,7 @@ class OWWebSearch(OWWidget):
         'autoSend',
         'operation',
         'displayAdvancedSettings',
-        'licenseKey',
+        'twitterLicenseKey',
         'service',
         'wiki_section',
         'wiki_type_of_text'
@@ -46,23 +42,22 @@ class OWWebSearch(OWWidget):
         
         OWWidget.__init__(self, parent, signalManager, wantMainArea=0)
 
-        #----------------------------------------------------------------------
-        # Channel definitions...
-        #self.inputs = [('Integer', str, 'debut')]     
-        #self.outputs = [('Text data', Segmentation)]
+      
+        # DEFINE OUTPUT
+        
         self.outputs = [('Text data', Segmentation)]
 
-        
+       
 
-        #----------------------------------------------------------------------
         # Settings and other attribute initializations...
+
         self.segment_label = u'WebSearch_data'
         self.nb_tweet = 50
         self.include_RT = False
         self.word_to_search = ''
         self.autoSend = False 
         self.displayAdvancedSettings = False
-        self.licenseKey = ""
+        self.twitterLicenseKey = ''
         self.service = u'Twitter'
         self.wiki_section = False
         self.wiki_type_of_text = u'Plain text'
@@ -79,16 +74,15 @@ class OWWebSearch(OWWidget):
             'Dutch': 'nl'
         }
 
-        # Always end Textable widget settings with the following 3 lines...
+        
+
+        # BASIC SETTING
+
         self.uuid = None
         self.loadSettings()
         self.uuid = getWidgetUuid(self)
-        
-        self.inputData = None   # NB: not a setting.
+        self.inputData = None
 
-        # Next two instructions are helpers from TextableUtils. Corresponding
-        # interface elements are declared here and actually drawn below (at
-        # their position in the UI)...
         self.infoBox = InfoBox(widget=self.controlArea)
         self.sendButton = SendButton(
             widget=self.controlArea,
@@ -98,39 +92,24 @@ class OWWebSearch(OWWidget):
             infoBoxAttribute='infoBox'
         )
 
-        # The AdvancedSettings class, also from TextableUtils, facilitates
-        # the management of basic vs. advanced interface. An object from this 
-        # class (here assigned to self.advancedSettings) contains two lists 
-        # (basicWidgets and advanceWidgets), to which the corresponding
-        # widgetBoxes must be added.
+        
+
+        # ADVANCE BOX
+
         self.advancedSettings = AdvancedSettings(
             widget=self.controlArea,
             master=self,
             callback=self.toggle_AdvancedSettingg
         )
-        #----------------------------------------------------------------------
-        # User interface...
         
-        # Advanced settings checkbox (basic/advanced interface will appear 
-        # immediately after it...
         self.advancedSettings.draw()
 
-        # key box (advanced settings only)
         advanceBox = OWGUI.widgetBox(
             widget=self.controlArea,
             box=True,
             orientation='vertical',
         )
-
-        keyInput = OWGUI.lineEdit(
-            widget=advanceBox,
-            master=self,
-            value='licenseKey',
-            orientation='horizontal',
-            label=u'License key:',
-            labelWidth=160,
-        )
-        
+    
         OWGUI.comboBox(
             widget              = advanceBox,
             master              = self,
@@ -147,8 +126,9 @@ class OWWebSearch(OWWidget):
         )
 
 
-        # The following lines add keyBox (and a vertical separator) to the
-        # advanced interface...
+        
+        # CONFIG BOXES
+
         self.advancedSettings.advancedWidgets.append(advanceBox)
         self.advancedSettings.advancedWidgetsAppendSeparator()
         
@@ -160,6 +140,9 @@ class OWWebSearch(OWWidget):
 
         self.serviceBoxes = [self.twitterBox, self.wikipediaBox, self.bingBox]
 
+
+
+        # OPTION BOX
 
         OWGUI.comboBox(
             widget              = optionsBox,
@@ -175,7 +158,6 @@ class OWWebSearch(OWWidget):
                     u"Select a service."
             ),
         )
-
 
         OWGUI.lineEdit(
             widget              = optionsBox,
@@ -196,6 +178,11 @@ class OWWebSearch(OWWidget):
             labelWidth=160,
             callback=self.sendButton.settingsChanged,
         )
+
+
+
+
+        # TWITTER BOX
 
         OWGUI.spin(
             widget=self.twitterBox,          
@@ -220,6 +207,52 @@ class OWWebSearch(OWWidget):
                     u"Include re-tweets or not."
             ),
         )
+
+
+
+
+        # TWITTER LICENSE KEY BOX
+
+        OWGUI.separator(
+                widget              = self.twitterBox,
+                height              = 3,
+        )
+
+        twitterLicenseKeyBox = OWGUI.widgetBox(
+                widget              = self.twitterBox,
+                box                 = False,
+                orientation         = 'horizontal',
+        )
+
+        OWGUI.checkBox(
+            widget              = twitterLicenseKeyBox,
+            master              = self,
+            value               = 'include_RT',
+            label               = u'Use license key: ',
+            labelWidth          = 160,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Use private license key or not."
+            ),
+        )
+
+        OWGUI.lineEdit(
+            widget=twitterLicenseKeyBox,
+            master=self,
+            value='twitterLicenseKey',
+            orientation='horizontal',
+            callback=self.sendButton.settingsChanged,
+            labelWidth=160,
+        )
+
+        OWGUI.separator(
+                widget              = self.twitterBox,
+                height              = 3,
+        )
+
+
+
+        # WIKIPEDIA BOX
 
         OWGUI.checkBox(
             widget              = self.wikipediaBox,
@@ -248,6 +281,10 @@ class OWWebSearch(OWWidget):
             ),
         )
 
+
+
+        # BING BOX
+
         OWGUI.spin(
             widget=self.bingBox,          
             master=self, 
@@ -261,27 +298,17 @@ class OWWebSearch(OWWidget):
         )
 
 
-
-        # OWGUI.button(
-        #     widget=optionsBox,
-        #     master=self,
-        #     label='Get tweet',
-        #     callback=self.sendData,
-        # )
+        # CONFIG WIDGET
         
-        # Now Info box and Send button must be drawn...
         self.infoBox.draw()
         self.sendButton.draw()
-
         self.set_service_box_visibility()
-        
-
-        # Send data if autoSend.
         self.sendButton.sendIf()
-
         self.resize(10, 10)
         
 
+
+    # GET DATA FROM PATTERN WEB
 
     def get_tweets(self, search, nb, include_RT=False):
         twitter = Twitter(language=self.dico_lang[self.language])
@@ -315,6 +342,7 @@ class OWWebSearch(OWWidget):
                 tweets.append(tweet_input)
         return tweets
     
+
     def get_wiki_article(self, search, separate_in_section=False, type_of_text=u'Plain text'):
         segments = []
         article = Wikipedia(language=self.dico_lang[self.language]).search(search, cached=False)
@@ -347,6 +375,7 @@ class OWWebSearch(OWWidget):
                 segments.append(wiki_article)
         return segments
 
+
     def get_bing_entries(self, search, nb):
         bing = Bing(language=self.dico_lang[self.language])
         entries = []
@@ -362,20 +391,16 @@ class OWWebSearch(OWWidget):
             entries.append(entry_input)
         return entries
 
+
+
+
+    # SEND DATA
+
     def sendData(self):
         """Compute result of widget processing and send to output"""
-        # Clear created Inputs.
+
+        # Clear created Inputs
         self.clearCreatedInputs()
-        
-         # Initialize progress bar.
-        progressBar = OWGUI.ProgressBar(
-            self, 
-            iterations=50
-        )
-        a = 0
-        while a < 10:
-            progressBar.advance()   # 1 tick on the progress bar...
-            a += 1
         
         if self.service == u'Twitter':
             createdInputs = self.get_tweets(
@@ -397,6 +422,11 @@ class OWWebSearch(OWWidget):
                 self.nb_bing_entry
             )
 
+        # Initialize progress bar
+        progressBar = OWGUI.ProgressBar(
+            self, 
+            iterations=50
+        )
 
         message = u'%i segment@p.' % len(createdInputs)
         message = pluralize(message, len(createdInputs))
@@ -404,30 +434,31 @@ class OWWebSearch(OWWidget):
 
         segmenter = Segmenter()
         out_object = segmenter.concatenate(createdInputs, self.segment_label, import_labels_as=None)
-        
+        a = 0
         while a < 50:
-            progressBar.advance()   # 1 tick on the progress bar...
+            progressBar.advance()
             a += 1
 
         # Clear progress bar.
         progressBar.finish()
 
         self.send('Text data', out_object, self)
-        
+    
         self.sendButton.resetSettingsChangedFlag()
         
-    def updateGUI(self):  # si advanced settings est coche, alors cela l'affiche. 
+
+
+
+    # SET CHANGE IN WIDGET
+
+    def updateGUI(self):
         """Update GUI state"""
         if self.displayAdvancedSettings:
             self.advancedSettings.setVisible(True)
         else:
             self.advancedSettings.setVisible(False)
 
-        #self.infoBox.customMessage(u'Setting changed. Click send.')
-
-        #if self.autoSend:
-        #    self.sendData()
-
+        
     def toggle_AdvancedSettingg(self):
         if self.displayAdvancedSettings:
             self.advancedSettings.setVisible(True)
@@ -451,15 +482,14 @@ class OWWebSearch(OWWidget):
             self.bingBox.setVisible(True)
 
         self.updateGUI()
-
-        #self.infoBox.dataSent('Debug: ' + self.service)
-            
+     
 
     def getSettings(self, *args, **kwargs):
         """Read settings, taking into account version number (overriden)"""
         settings = OWWidget.getSettings(self, *args, **kwargs)
         settings["settingsDataVersion"] = __version__.split('.')[:2]
         return settings
+
 
     def setSettings(self, settings):
         """Write settings, taking into account version number (overriden)"""
@@ -468,6 +498,7 @@ class OWWebSearch(OWWidget):
             settings = settings.copy()
             del settings["settingsDataVersion"]
             OWWidget.setSettings(self, settings)
+
 
     def clearCreatedInputs(self):
         """Delete all Input objects that have been created."""
@@ -482,6 +513,7 @@ class OWWebSearch(OWWidget):
                 Segmentation.data.pop(i)
             else:
                 break
+
 
 if __name__=='__main__':
     myApplication = QApplication(sys.argv)
