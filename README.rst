@@ -18,7 +18,7 @@ Depending on the service, the output segmentation has the following annotations 
 * Wikipedia : source and search.
 * Bing : url, source, search and title.
 
-The interface of WebSearch adapts itself to the selected service. In case the **Advanced settings** checkbox is selected, more options are revealed.
+The interface of WebSearch adapts itself to the selected service. If the **Advanced settings** checkbox is selected, more options are revealed.
 
 2.1 Basic Interface
 **************
