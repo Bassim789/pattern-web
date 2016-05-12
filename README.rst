@@ -40,7 +40,9 @@ Clicking on the **Send** button executes the request. The **Info** box above ind
 ~~~~~~~~~~~~~~~~~~
 When the user selects Twitter, he or she can indicate the **Number of tweets** in the eponym field. 
 
-2.1.1 Twitter
+
+
+2.1.1 Wikipedia
 ~~~~~~~~~~~~~~~~~~
 
 
