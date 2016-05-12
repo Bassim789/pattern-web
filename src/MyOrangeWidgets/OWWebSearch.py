@@ -29,11 +29,18 @@ class OWWebSearch(OWWidget):
         'autoSend',
         'operation',
         'displayAdvancedSettings',
-        'twitterLicenseKey',
+
+        'useTwitterLicenseKey',
+        'twitterLicenseKeys',
+        'twitterLicenseKeysConsumerKey',
+        'twitterLicenseKeysConsumerSecret',
+        'twitterLicenseKeysAccessToken',
+        'twitterLicenseKeysAccessTokenSecret',
+
         'service',
         'wiki_section',
-        'wiki_type_of_text'
-        'nb_bing_entry'
+        'wiki_type_of_text',
+        'nb_bing_entry',
         'language'
     ]  
     
@@ -57,7 +64,14 @@ class OWWebSearch(OWWidget):
         self.word_to_search = ''
         self.autoSend = False 
         self.displayAdvancedSettings = False
-        self.twitterLicenseKey = ''
+
+        self.useTwitterLicenseKey = False
+        self.twitterLicenseKeys = False
+        self.twitterLicenseKeysConsumerKey = ''
+        self.twitterLicenseKeysConsumerSecret = ''
+        self.twitterLicenseKeysAccessToken = ''
+        self.twitterLicenseKeysAccessTokenSecret = ''
+
         self.service = u'Twitter'
         self.wiki_section = False
         self.wiki_type_of_text = u'Plain text'
@@ -213,42 +227,72 @@ class OWWebSearch(OWWidget):
 
         # TWITTER LICENSE KEY BOX
 
-        OWGUI.separator(
-                widget              = self.twitterBox,
-                height              = 3,
-        )
-
-        twitterLicenseKeyBox = OWGUI.widgetBox(
-                widget              = self.twitterBox,
-                box                 = False,
-                orientation         = 'horizontal',
-        )
-
         OWGUI.checkBox(
-            widget              = twitterLicenseKeyBox,
+            widget              = self.twitterBox,
             master              = self,
-            value               = 'include_RT',
-            label               = u'Use license key: ',
+            value               = 'useTwitterLicenseKey',
+            label               = u'Use license key',
             labelWidth          = 160,
-            callback            = self.sendButton.settingsChanged,
+            callback            = self.changeTwitterLicenseKeyBox,
             tooltip             = (
                     u"Use private license key or not."
             ),
         )
 
+        self.twitterLicenseBox = OWGUI.widgetBox(self.twitterBox, False)
+
         OWGUI.lineEdit(
-            widget=twitterLicenseKeyBox,
+            widget=self.twitterLicenseBox,
             master=self,
-            value='twitterLicenseKey',
+            value='twitterLicenseKeysConsumerKey',
+            label=u'Consumer key: ',
             orientation='horizontal',
             callback=self.sendButton.settingsChanged,
             labelWidth=160,
+            tooltip=(
+                    u"Your twitter Consumer key."
+            ),
         )
 
-        OWGUI.separator(
-                widget              = self.twitterBox,
-                height              = 3,
+        OWGUI.lineEdit(
+            widget=self.twitterLicenseBox,
+            master=self,
+            value='twitterLicenseKeysConsumerSecret',
+            label=u'Consumer secret: ',
+            orientation='horizontal',
+            callback=self.sendButton.settingsChanged,
+            labelWidth=160,
+            tooltip=(
+                    u"Your private twitter license key."
+            ),
         )
+
+        OWGUI.lineEdit(
+            widget=self.twitterLicenseBox,
+            master=self,
+            value='twitterLicenseKeysAccessToken',
+            label=u'Access token: ',
+            orientation='horizontal',
+            callback=self.sendButton.settingsChanged,
+            labelWidth=160,
+            tooltip=(
+                    u"Your private twitter Access token."
+            ),
+        )
+
+        OWGUI.lineEdit(
+            widget=self.twitterLicenseBox,
+            master=self,
+            value='twitterLicenseKeysAccessTokenSecret',
+            label=u'Access token secret: ',
+            orientation='horizontal',
+            callback=self.sendButton.settingsChanged,
+            labelWidth=160,
+            tooltip=(
+                    u"Your private twitter access token secret."
+            ),
+        )
+
 
 
 
@@ -303,6 +347,7 @@ class OWWebSearch(OWWidget):
         self.infoBox.draw()
         self.sendButton.draw()
         self.set_service_box_visibility()
+        self.changeTwitterLicenseKeyBox()
         self.sendButton.sendIf()
         self.resize(10, 10)
         
@@ -310,8 +355,16 @@ class OWWebSearch(OWWidget):
 
     # GET DATA FROM PATTERN WEB
 
-    def get_tweets(self, search, nb, include_RT=False):
-        twitter = Twitter(language=self.dico_lang[self.language])
+    def get_tweets(self, search, nb, include_RT, useKey, keys):
+
+    	if not useKey:
+    		keys = None
+
+        twitter = Twitter(
+        	language=self.dico_lang[self.language],
+        	license=keys
+        )
+
         tweets = []
         if not include_RT:
             for tweet in twitter.search(search, start=1, count=nb*3):
@@ -403,11 +456,25 @@ class OWWebSearch(OWWidget):
         self.clearCreatedInputs()
         
         if self.service == u'Twitter':
-            createdInputs = self.get_tweets(
-                self.word_to_search,
-                self.nb_tweet,
-                self.include_RT
-            )
+        	try:
+	            createdInputs = self.get_tweets(
+	                self.word_to_search,
+	                self.nb_tweet,
+	                self.include_RT,
+	                self.useTwitterLicenseKey,
+	                (
+	                	self.twitterLicenseKeysConsumerKey,
+	                	self.twitterLicenseKeysConsumerSecret,
+	                	(
+	                		self.twitterLicenseKeysAccessToken,
+	                		self.twitterLicenseKeysAccessTokenSecret
+	                	)
+	                )
+	            )
+	        except "HTTP400BadRequest":
+	        	self.infoBox.dataSent(u'Error api keys')
+	        	return False
+
 
         elif self.service == u'Wikipedia':
             createdInputs = self.get_wiki_article(
@@ -482,6 +549,17 @@ class OWWebSearch(OWWidget):
             self.bingBox.setVisible(True)
 
         self.updateGUI()
+
+    def changeTwitterLicenseKeyBox(self):
+
+    	self.sendButton.settingsChanged()
+
+    	if self.useTwitterLicenseKey:
+            self.twitterLicenseBox.setVisible(True)
+        else:
+        	self.twitterLicenseBox.setVisible(False)
+
+
      
 
     def getSettings(self, *args, **kwargs):
