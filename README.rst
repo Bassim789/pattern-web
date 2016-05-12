@@ -7,7 +7,8 @@ WebSearch
 1 Signals
 **************
 Inputs : None
-|Outputs : WebSearch_data
+
+Outputs : WebSearch_data
 
 2 Description
 **************
