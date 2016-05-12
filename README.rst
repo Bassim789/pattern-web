@@ -24,6 +24,7 @@ The interface of WebSearch adapts itself to the selected service. If the **Advan
 2.1 Basic Interface
 **************
 As stated before, the basic interface is dependant of the selected service. In case Twitter is chosen, the interface looks like this :
+
 .. image:: img/twitter.png
 
 The Query field contains the word(s) that is (are) going to be searched on the chosen web engine, in this example Twitter. Clicking on the Send button w
