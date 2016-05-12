@@ -32,7 +32,7 @@ The **Service** field allows the user to select a search engine (Twitter, Wikipe
 
 The **Query** field contains the word(s) that is (are) going to be searched on the chosen web engine, in this example Twitter. 
 
-By default, the **Output segmentation label** is named 'WebSearch_data'
+By default, the **Output segmentation label** is named `WebSearch_data`
 
 Clicking on the **Send** button w
 
