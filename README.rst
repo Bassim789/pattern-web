@@ -42,7 +42,7 @@ Depending on which search engine is selected, different options appear on the ba
 ~~~~~~~~~~~~~~~~~~
 The **Number of tweets** field allows users to select up to 3000 tweets, in case the request matches as many tweets as required by the entered number.  
 
-When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order that only regular tweets are sent to output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
+When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order to only send "original" tweets to output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
 
 Twitter allows their users to own a license key which can be entered in the eponym field.  
 
