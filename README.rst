@@ -26,14 +26,13 @@ The interface of WebSearch adapts itself to the selected service. If the **Advan
 As stated before, the basic interface is dependant of the selected service. In case Twitter is chosen, the interface looks like this :
 
 .. image:: img/twitter.png
-:alt: WebSearch widget with Twitter selected (basic interface)
 Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
 The **Query** field contains the word(s) that is (are) going to be searched on the chosen web engine, in this example Twitter. 
 
-By default, the **Output segmentation label** is named 
+By default, the **Output segmentation label** is named 'WebSearch_data'
 
 Clicking on the **Send** button w
 
