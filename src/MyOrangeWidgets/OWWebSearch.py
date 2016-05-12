@@ -67,7 +67,7 @@ class OWWebSearch(OWWidget):
         self.wiki_section = False
         self.wiki_type_of_text = u'Plain text'
         self.nb_bing_entry = 50
-        self.language = 'en'
+        self.language = 'English'
         self.createdInputs = list()
 
         self.dico_lang = {
