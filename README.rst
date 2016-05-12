@@ -30,16 +30,21 @@ Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
-The **Query** field contains the word(s) that is (are) going to be searched on the chosen web engine, in this example Twitter. 
+The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To learn how to change it: read 2.2.
 
-By default, the **Output segmentation label** is named `WebSearch_data`. Users can however change it if needed. 
+By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
-Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent if any matches the request.
+Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any match the request).
+
+Depending on which search engine is selected, different options appear on the basic interface. Those specific aspects are stated below.
 
 2.1.1 Twitter
 ~~~~~~~~~~~~~~~~~~
-When the user selects Twitter, he or she can indicate the **Number of tweets** in the eponym field. 
+The **Number of tweets** field allows users to select up to 3000 tweets, in case the request matches as many tweets as required by the entered number.  
 
+When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order that only regular tweets are sent to output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
+
+Twitter allows their users to own a license key which can be entered in the eponym field.  
 
 
 2.1.1 Wikipedia
