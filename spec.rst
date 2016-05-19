@@ -1,5 +1,5 @@
 ##################################
-Specification: Widget Textable Pattern-web
+Spécification: Widget Textable Pattern-web
 ##################################
 
 
@@ -16,10 +16,10 @@ Dernière version en Python 2 disponible
 
 1.2 Aperçu des étapes
 =====================
-* Première version de la specification: 17 mars 2016
-* Remise de la specification: 24 mars 2016
+* Première version de la spécification: 17 mars 2016
+* Remise de la spécification: 24 mars 2016
 * Version alpha du projet:  28 avril 2016
-* Remise et presentation du projet:  26 mai 2016
+* Remise et présentation du projet:  26 mai 2016
 
 1.3 Equipe et responsabilités
 ==============================
