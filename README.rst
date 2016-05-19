@@ -69,11 +69,10 @@ Once the **Advanced settings** checkbox is selected, a new box reveals itself on
 .. image:: img/Advanced.png
 Figure 4 : WebSearch widget with Twitter selected (advanced interface)
 
-3. Message
+3. Messages
 **************
 *Setting changed. Click send.*
-
-This message informs the user that the settings have been changed and are ready to be sent. 
+    This message informs the user that the settings have been changed and are ready to be sent. 
 
 *Data correctly sent to output: <n> segments.*
 
