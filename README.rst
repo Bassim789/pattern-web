@@ -19,13 +19,13 @@ Depending on the service, the output segmentation has the following annotations 
 * Wikipedia : source and search.
 * Bing : url, source, search and title.
 
-The interface of WebSearch adapts itself according to the selected service. If the **Advanced settings** checkbox is selected, more options are revealed.
+The interface of WebSearch adapts itself according to the selected service.
 
 2.1 Basic Interface
 **************
-As stated before, the basic interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
+As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
-.. image:: img/twitter.png
+.. image:: img/Twitter.png
 Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
@@ -66,6 +66,7 @@ The **Number of results** field allows users to retrieve up to 1000 Bing results
 2.2 Advanced Interface
 **************
 Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the language of the retrieved data. 
+
 .. image:: img/Advanced.png
 Figure 4 : WebSearch widget with Twitter selected (advanced interface)
 
