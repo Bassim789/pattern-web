@@ -489,16 +489,16 @@ class OWWebSearch(OWWidget):
                 self.nb_bing_entry
             )
 
-        # Initialize progress bar
-        progressBar = OWGUI.ProgressBar(
-            self, 
-            iterations=50
-        )
-
         if len(createdInputs) == 0:
         	self.infoBox.noDataSent('\nPlease try to change query or settings.')
 	        return False
 
+
+	    # Initialize progress bar
+        progressBar = OWGUI.ProgressBar(
+            self, 
+            iterations=50
+        )
 
         message = u'%i segment@p.' % len(createdInputs)
         message = pluralize(message, len(createdInputs))
