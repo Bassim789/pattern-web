@@ -75,16 +75,13 @@ Figure 4 : WebSearch widget with Twitter selected (advanced interface)
     This message informs the user that the settings have been changed and are ready to be sent. 
 
 *Data correctly sent to output: <n> segments.*
-
-The data, comprises of <n> number of segments has been sent to the output correctly.
+    The data, comprises of <n> number of segments has been sent to the output correctly.
 
 *No data sent to output.*
-
-The search didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
+    The search didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
 
 *Settings were changed, please click 'Send' when ready.*
-
-Unless the **Send automatically** checkbox is selected, any changes in the settings require to click "Send".
+    Unless the **Send automatically** checkbox is selected, any changes in the settings require to click "Send".
 
 
 
