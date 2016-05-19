@@ -49,9 +49,9 @@ Dernière version en Python 2 disponible
     - Codage
     - Specification
     
-* Jean Schuwey `jean.schuwey@unil.ch`_ :
+* Jean Galleno `jean.galleno@unil.ch`_ :
 
-.. _jean.schuwey@unil.ch: mailto:jean-schuwey@unil.ch
+.. _jean.galleno@unil.ch: mailto:jean.galleno@unil.ch
 
     - Codage
     - Gestion de projet
