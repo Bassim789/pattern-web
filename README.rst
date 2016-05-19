@@ -30,11 +30,11 @@ Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
-The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To learn how to change it : read 2.2.
+The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To change it : read 2.2.
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
-Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any match the request). More informations about the **Info** box : read 3.
+Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any match the request). For more informations about the **Info** box : read 3.
 
 Depending on which search engine is selected, different options appear on the basic interface. Those specific aspects are stated below.
 
