@@ -1,8 +1,7 @@
 ##################################
 WebSearch
 ##################################
-.. image:: img/icon_WebSearch_transpaHD.png
-    :width: 50px
+.. image:: src/MyOrangeWidgets/icons/icon_WebSearch_transpa_54.png 
 
 
 1. Signals
