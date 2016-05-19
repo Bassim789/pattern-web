@@ -1,8 +1,8 @@
 ##################################
 WebSearch
-.. image:: src/MyOrangeWidgets/icons/icon_WebSearch_transpa_54.png 
 ##################################
-
+.. image:: src/MyOrangeWidgets/icons/icon_WebSearch_transpa_54.png 
+Import Twitter, Wikipedia and Bing data.
 
 1. Signals
 **************
