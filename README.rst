@@ -25,7 +25,7 @@ The interface of WebSearch adapts itself according to the selected service.
 **************
 As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
-.. image:: img/Twitter.png
+.. image:: img/twitter.png
 Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
@@ -44,7 +44,7 @@ The **Number of tweets** field allows users to retrieve up to 3000 tweets, in ca
 
 When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order to only send "original" tweets to the output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
 
-Twitter allows their users to own a license key which can be entered in the eponymous field.  
+Twitter allows their users to own a license key. To unfold the license key parameters, tick the **Use license key** checkbox. Four keys (which can be found under "Keys and Access Tokens" in user's account) are needed. Visit apps.twitter.com to learn more. 
 
 .. image:: img/Twitter_license.png
 Figure 2 : Twitter options box with license key parameters (basic interface)
