@@ -473,6 +473,7 @@ class OWWebSearch(OWWidget):
 	            )
 	        except (HTTP401Authentication, HTTP400BadRequest):
 	        	self.infoBox.noDataSent(error = u'Wrong keys for Twitter api.')
+	        	self.send(u'Text data', None, self)
 	        	return False
 
 
@@ -489,10 +490,16 @@ class OWWebSearch(OWWidget):
                 self.nb_bing_entry
             )
 
+        # Check that label is not empty...
+        if not self.segment_label:
+            self.infoBox.noDataSent(warning=u'No label was provided.')
+            self.send(u'Text data', None, self)
+            return False
+
         if len(createdInputs) == 0:
         	self.infoBox.noDataSent('\nPlease try to change query or settings.')
+        	self.send(u'Text data', None, self)
 	        return False
-
 
 	    # Initialize progress bar
         progressBar = OWGUI.ProgressBar(
