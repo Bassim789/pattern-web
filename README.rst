@@ -19,11 +19,11 @@ Depending on the service, the output segmentation has the following annotations 
 * Wikipedia : source and search.
 * Bing : url, source, search and title.
 
-The interface of WebSearch adapts itself to the selected service. If the **Advanced settings** checkbox is selected, more options are revealed.
+The interface of WebSearch adapts itself according to the selected service. If the **Advanced settings** checkbox is selected, more options are revealed.
 
 2.1 Basic Interface
 **************
-As stated before, the basic interface is dependant of the selected service. In case Twitter is chosen, the interface looks like this :
+As stated before, the basic interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
 .. image:: img/twitter.png
 Figure 1 : WebSearch widget with Twitter selected (basic interface)
@@ -34,17 +34,17 @@ The **Query** field contains the searched word(s) on the chosen web engine. By d
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
-Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any match the request). For more informations about the **Info** box : read 3.
+Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any matches the request). For more informations about the **Info** box : read 3.
 
-Depending on which search engine is selected, different options appear on the basic interface. Those specific aspects are stated below.
+Depending on which search engine is selected, different options appear on the basic interface. These specific aspects are stated below.
 
 2.1.1 Twitter
 ~~~~~~~~~~~~~~~~~~
 The **Number of tweets** field allows users to retrieve up to 3000 tweets, in case the request matches as many tweets as required by the entered number.  
 
-When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order to only send "original" tweets to output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
+When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order to only send "original" tweets to the output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
 
-Twitter allows their users to own a license key which can be entered in the eponym field.  
+Twitter allows their users to own a license key which can be entered in the eponymous field.  
 
 2.1.2 Wikipedia
 ~~~~~~~~~~~~~~~~~~
@@ -65,7 +65,7 @@ The **Number of results** field allows users to retrieve up to 1000 Bing results
 
 2.2 Advanced Interface
 **************
-Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the Language of the retrieved data. 
+Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the language of the retrieved data. 
 .. image:: img/Advanced.png
 Figure 4 : WebSearch widget with Twitter selected (advanced interface)
 
@@ -75,10 +75,10 @@ Figure 4 : WebSearch widget with Twitter selected (advanced interface)
     This message informs the user that the settings have been changed and are ready to be sent. 
 
 *Data correctly sent to output: <n> segments.*
-    The data, comprises of <n> number of segments has been sent to the output correctly.
+    The data, containing <n> number of segments, has been sent to the output correctly.
 
 *No data sent to output.*
-    The search didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
+    The query didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
 
 *Settings were changed, please click 'Send' when ready.*
     Unless the **Send automatically** checkbox is selected, any changes in the settings require to click "Send".
