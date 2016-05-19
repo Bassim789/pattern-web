@@ -46,10 +46,13 @@ When **Include retweets** is checked, tweets starting with 'RT' are filtered out
 
 Twitter allows their users to own a license key which can be entered in the eponymous field.  
 
+.. image:: img/Twitter_license.png
+Figure 2 : Twitter options box with license key parameters (basic interface)
+
 2.1.2 Wikipedia
 ~~~~~~~~~~~~~~~~~~
 .. image:: img/Wikipedia.png
-Figure 2 : Wikipedia options box (basic interface)
+Figure 3 : Wikipedia options box (basic interface)
 
 When **Segment into sections** is checked, Wikipedia articles are divided into sections : each segment contains a section. 
 
@@ -58,17 +61,17 @@ The **Output format** is either "Plain text" or "HTML".
 2.1.3 Bing
 ~~~~~~~~~~~~~~~~~~
 .. image:: img/Bing.png
-Figure 3 : Bing options box (basic interface)
+Figure 4 : Bing options box (basic interface)
 
 The **Number of results** field allows users to retrieve up to 1000 Bing results, in case the request matches as many results as required by the entered number.
 
 
 2.2 Advanced Interface
 **************
-Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the language of the retrieved data. 
+Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the language of the retrieved data (by default : english). 
 
 .. image:: img/Advanced.png
-Figure 4 : WebSearch widget with Twitter selected (advanced interface)
+Figure 5 : WebSearch widget with Twitter selected (advanced interface)
 
 3. Messages
 **************
