@@ -85,12 +85,12 @@ Dernière version en Python 2 disponible
 
 2.2 Fonctionnalités minimales
 =============================
-- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. Le texte est segmenté en fonction du tweet (1 tweet = 1 segment). L'utilisateur pourra aussi défininir le nombre de tweets à afficher. 
+- Utiliser un mot-clé donné par l'utilisateur pour rechercher du texte via Twitter et l'afficher. Le texte est segmenté en fonction du tweet (1 tweet = 1 segment). L'utilisateur pourra aussi définir le nombre de tweets à afficher. 
 
 2.3 Fonctionnalités principales
 ===============================
 - Permettre à l'utilisateur de générer un corpus de texte depuis les sections de la page Wikipédia du mot-clé utilisé. Chaque section représente un segment. 
-- Avec Bing, permettre à l'utilisateur d'avoir un corpus textuel (sous forme du résumé de l'URL) généré depuis les entrées des recherches effectée sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
+- Avec Bing, permettre à l'utilisateur d'avoir un corpus textuel (sous forme du résumé de l'URL) généré depuis les entrées des recherches effectuées sur le moteur de recherche avec le mot-clé et segmenté selon les entrées. 
 - Permettre à l'utilisateur de sélectionner plusieurs moteurs de recherche à la fois.
 
 
