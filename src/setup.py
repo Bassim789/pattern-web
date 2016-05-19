@@ -10,7 +10,7 @@ setup(
         'Orange-Textable>=1.5.2',
         'Pattern>=2.6',
     ],
-    author='B. Matar, C. Nghiem, T. Rusconi, J. Schuwey  et G. Thonney',
+    author='B. Matar, C. Nghiem, T. Rusconi, J. Galleno  et G. Thonney',
     license='GNU General Public License v3 (GPLv3)',
     keywords=[
         'corpus textuel',
