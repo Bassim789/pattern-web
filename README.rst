@@ -30,11 +30,11 @@ Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
-The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To change it : read 2.2.
+The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To change it : read 2.2 `Advanced Interface`_.
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
-Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any matches the request). For more informations about the **Info** box : read 3.
+Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any matches the request). For more informations about the **Info** box : read `Messages`_.
 
 Depending on which search engine is selected, different options appear on the basic interface. These specific aspects are stated below.
 
@@ -76,7 +76,7 @@ Figure 5 : WebSearch widget with Twitter selected (advanced interface)
 3. Messages
 **************
 
-Information
+3.1 Information
 ~~~~~~~~~~~
 
 *Setting changed. Click send.*
@@ -97,14 +97,14 @@ Information
     found in the **Widget state** box at the bottom of the instance's
     interface (see `Warnings`_ and `Errors`_ below).
 
-Warnings
+3.2 Warnings
 ~~~~~~~~
 
 *No label was provided.*
     A label must be entered in the **Output segmentation label** field in
     order for computation and data emission to proceed.
 
-Errors
+3.3 Errors
 ~~~~~~~~~~~
 *Wrong keys for Twitter api.*
     The entered values don't match any existing key.
