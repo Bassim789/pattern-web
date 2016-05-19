@@ -97,7 +97,14 @@ Information
     found in the **Widget state** box at the bottom of the instance's
     interface (see `Warnings`_ and `Errors`_ below).
 
-Error
+Warnings
+~~~~~~~~
+
+*No label was provided.*
+    A label must be entered in the **Output segmentation label** field in
+    order for computation and data emission to proceed.
+
+Errors
 ~~~~~~~~~~~
 *Wrong keys for Twitter api.*
     The entered values don't match any existing key.
