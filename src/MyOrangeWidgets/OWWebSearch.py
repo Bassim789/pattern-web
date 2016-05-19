@@ -471,7 +471,7 @@ class OWWebSearch(OWWidget):
 	                	)
 	                )
 	            )
-	        except HTTP401Authentication, HTTP400BadRequest:
+	        except (HTTP401Authentication, HTTP400BadRequest):
 	        	self.infoBox.noDataSent(error = u'Wrong keys for Twitter api.')
 	        	return False
 
