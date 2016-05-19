@@ -75,17 +75,33 @@ Figure 5 : WebSearch widget with Twitter selected (advanced interface)
 
 3. Messages
 **************
+
+Information
+~~~~~~~~~~~
+
 *Setting changed. Click send.*
     This message informs the user that the settings have been changed and are ready to be sent. 
 
 *Data correctly sent to output: <n> segments.*
     The data, containing <n> number of segments, has been sent to the output correctly.
 
-*No data sent to output.*
+*No data sent to output yet. Please try to change query and settings.*
     The query didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
 
 *Settings were changed, please click 'Send' when ready.*
     Unless the **Send automatically** checkbox is selected, any changes in the settings require to click "Send".
+    
+*No data sent to output yet, see 'Widget state' below.*
+    A problem with the instance's parameters and/or input data prevents it
+    from operating properly, and additional diagnostic information can be
+    found in the **Widget state** box at the bottom of the instance's
+    interface (see `Warnings`_ and `Errors`_ below).
+
+Error
+~~~~~~~~~~~
+*Wrong keys for Twitter api.*
+    The entered values don't match any existing key.
+
 
 
 
