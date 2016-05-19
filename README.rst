@@ -1,7 +1,8 @@
 ##################################
 WebSearch
 ##################################
-
+.. image:: img/icon_WebSearch_transpaHD.png
+    :width: 50px
 
 
 1. Signals
