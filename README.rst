@@ -22,7 +22,7 @@ Depending on the service, the output segmentation has the following annotations 
 The interface of WebSearch adapts itself according to the selected service.
 
 2.1 Basic Interface
-**************
+~~~~~~~~~~~~~~~~~~
 As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
 .. image:: img/twitter.png
