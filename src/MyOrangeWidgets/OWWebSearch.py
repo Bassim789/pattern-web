@@ -10,7 +10,7 @@ __version__ = '0.0.2'
 import Orange
 from OWWidget import *
 import OWGUI
-from pattern.web import Twitter, Wikipedia, Bing, SEARCH, HTTP401Authentication
+from pattern.web import Twitter, Wikipedia, Bing, SEARCH, HTTP401Authentication, HTTP400BadRequest
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
@@ -471,7 +471,7 @@ class OWWebSearch(OWWidget):
 	                	)
 	                )
 	            )
-	        except HTTP401Authentication:
+	        except HTTP401Authentication, HTTP400BadRequest:
 	        	self.infoBox.noDataSent(error = u'Wrong keys for Twitter api.')
 	        	return False
 
