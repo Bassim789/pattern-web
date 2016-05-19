@@ -1,5 +1,5 @@
 ##################################
-Spécification: Widget Textable Pattern-web
+Spécification: Widget Textable WebSearch
 ##################################
 
 
