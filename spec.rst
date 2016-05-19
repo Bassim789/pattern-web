@@ -14,14 +14,14 @@ Créer un Widget Textable qui a pour fonction de créer un corpus textuel géné
 Dernière version en Python 2 disponible
 
 
-1.2 Aperçu des etapes
+1.2 Aperçu des étapes
 =====================
-* Premiere version de la specification: 17 mars 2016
+* Première version de la specification: 17 mars 2016
 * Remise de la specification: 24 mars 2016
 * Version alpha du projet:  28 avril 2016
 * Remise et presentation du projet:  26 mai 2016
 
-1.3 Equipe et responsabilitées
+1.3 Equipe et responsabilités
 ==============================
 
 * Bassim Matar `bassim.matar@unil.ch`_ :
@@ -96,9 +96,9 @@ Dernière version en Python 2 disponible
 
 2.4 Fonctionnalités optionnelles
 ===============================
-- Permettre à l'utilisateur d'entrez une clé de licence pour Bing, Twitter, etc. 
+- Permettre à l'utilisateur d'entrer une clé de licence pour Bing, Twitter, etc. 
 - Indiquer à l'utilisateur le nombre de requêtes restantes à effectuer par API. 
-- Avec Twitter, possibilité d'inclure ou non les retweets.
+- Avec Twitter, donner à l'utilisateur la possibilité d'inclure ou non les retweets.
 
 
 2.5 Tests
@@ -114,7 +114,7 @@ Le widget est considéré comme fonctionnel si:
 - Se renseigner sur les fonctionnalités de pattern et des différentes API.
 - Tester indépendemment chaque fonctionnalité du widget hors d'Orange Canvas.
 - Implémenter les fonctionnalités dans le widget.
-- Tests et correction. 
+- Tests et corrections. 
 
 En parallèle: 
 - Interface graphique
@@ -124,16 +124,16 @@ En parallèle:
 
 3.1 Version alpha
 =================
-* L'interface graphique est complétement construite.
+* L'interface graphique est complètement construite.
 * Les fonctionnalités minimales sont prises en charge par le logiciel.
 
 
 
 3.2 Remise et présentation
 ==========================
-* Les fonctionnalités principales sont complétement prises en charge par le logiciel.
+* Les fonctionnalités principales sont complètement prises en charge par le logiciel.
 * La documentation du logiciel est complète.
-* Le logiciel possède des routines de test de ses fonctionnalitées (principales ou optionelles).
+* Le logiciel possède des routines de test de ses fonctionnalités (principales ou optionelles).
 
 
 4. Infrastructure
