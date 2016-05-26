@@ -21,12 +21,12 @@ Depending on the service, the output segmentation has the following annotations 
 
 The interface of WebSearch adapts itself according to the selected service.
 
-2.1 Basic Interface
+2.1 Interface
 ~~~~~~~~~~~~~~~~~~
 As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
-.. image:: img/twitter.png
-*Figure 1 : WebSearch widget with Twitter selected (basic interface)*
+.. image:: img/Twitter.png
+*Figure 1 : WebSearch widget with Twitter selected*
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
@@ -48,13 +48,13 @@ When **Include retweets** is checked, tweets starting with 'RT' are filtered out
 
 Twitter allows their users to own a license key. To unfold the license key parameters, tick the **Use license key** checkbox. Four keys (which can be found under "Keys and Access Tokens" in user's account) are needed. Visit apps.twitter.com to learn more. 
 
-.. image:: img/Twitter_license.png
+.. image:: img/Twitter_key.png
 *Figure 2 : Twitter options box with license key parameters (basic interface)*
 
 2.1.2 Wikipedia
 ~~~~~~~~~~~~~~~~~~
 .. image:: img/Wikipedia.png
-*Figure 3 : Wikipedia options box (basic interface)*
+*Figure 3 : Wikipedia options box*
 
 When **Segment into sections** is checked, Wikipedia articles are divided into sections : each segment contains a section. 
 
@@ -63,7 +63,7 @@ The **Output format** is either "Plain text" or "HTML".
 2.1.3 Bing
 ~~~~~~~~~~~~~~~~~~
 .. image:: img/Bing.png
-*Figure 4 : Bing options box (basic interface)*
+*Figure 4 : Bing options box*
 
 The **Number of results** field allows users to retrieve up to 1000 Bing results, in case the request matches as many results as required by the entered number.
 
