@@ -80,7 +80,7 @@ The **Number of results** field allows users to retrieve up to 1000 Bing results
     The data, containing <n> number of segments, has been sent to the output correctly.
 
 *No data sent to output yet. Please try to change query and settings.*
-    The query didn't retrieve any data. When confronted to this message, the user should try to simplify the query.
+    The query didn't retrieve any data. When confronted to this message, the user should either try to change the query or modify the settings.
 
 *Settings were changed, please click 'Send' when ready.*
     Unless the **Send automatically** checkbox is selected, any changes in the settings require to click "Send".
