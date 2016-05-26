@@ -30,6 +30,8 @@ Figure 1 : WebSearch widget with Twitter selected (basic interface)
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
+The **Language** field enables the user to choose the language of the retrieved data between english, french, german, spanish, italian and dutch  (by default : english). 
+
 The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To change it : read `2.2 Advanced Interface`_.
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
@@ -64,14 +66,6 @@ The **Output format** is either "Plain text" or "HTML".
 Figure 4 : Bing options box (basic interface)
 
 The **Number of results** field allows users to retrieve up to 1000 Bing results, in case the request matches as many results as required by the entered number.
-
-
-2.2 Advanced Interface
-**************
-Once the **Advanced settings** checkbox is selected, a new box reveals itself on top of the window. It enables the user to choose the language of the retrieved data (by default : english). 
-
-.. image:: img/Advanced.png
-Figure 5 : WebSearch widget with Twitter selected (advanced interface)
 
 3. Messages
 **************
