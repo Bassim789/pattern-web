@@ -38,7 +38,7 @@ By default, the **Output segmentation label** is named `WebSearch_data`. Users c
 
 Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any matches the request). For more informations about the **Info** box : read `3. Messages`_.
 
-Depending on which search engine is selected, different options appear on the basic interface. These specific aspects are stated below.
+Depending on which search engine is selected, different options appear on the interface. These specific aspects are stated below.
 
 2.1.1 Twitter
 ~~~~~~~~~~~~~~~~~~
@@ -49,7 +49,7 @@ When **Include retweets** is checked, tweets starting with 'RT' are filtered out
 Twitter allows their users to own a license key. To unfold the license key parameters, tick the **Use license key** checkbox. Four keys (which can be found under "Keys and Access Tokens" in user's account) are needed. Visit apps.twitter.com to learn more. 
 
 .. image:: img/Twitter_key.png
-*Figure 2 : Twitter options box with license key parameters (basic interface)*
+*Figure 2 : Twitter options box with license key parameters*
 
 2.1.2 Wikipedia
 ~~~~~~~~~~~~~~~~~~
