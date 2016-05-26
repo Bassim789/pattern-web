@@ -32,7 +32,7 @@ The **Service** field allows the user to select a search engine (Twitter, Wikipe
 
 The **Language** field enables the user to choose the language of the retrieved data between english, french, german, spanish, italian and dutch  (by default : english). 
 
-The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English. To change it : read `2.2 Advanced Interface`_.
+The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English.
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
