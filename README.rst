@@ -26,7 +26,7 @@ The interface of WebSearch adapts itself according to the selected service.
 As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
 .. image:: img/twitter.png
-Figure 1 : WebSearch widget with Twitter selected (basic interface)
+*Figure 1 : WebSearch widget with Twitter selected (basic interface)*
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
