@@ -28,7 +28,6 @@ class OWWebSearch(OWWidget):
         'word_to_search',
         'autoSend',
         'operation',
-        'displayAdvancedSettings',
 
         'useTwitterLicenseKey',
         'twitterLicenseKeys',
@@ -62,8 +61,7 @@ class OWWebSearch(OWWidget):
         self.nb_tweet = 50
         self.include_RT = False
         self.word_to_search = ''
-        self.autoSend = False 
-        self.displayAdvancedSettings = False
+        self.autoSend = False
 
         self.useTwitterLicenseKey = False
         self.twitterLicenseKeys = False
@@ -102,50 +100,12 @@ class OWWebSearch(OWWidget):
             widget=self.controlArea,
             master=self,
             callback=self.sendData,
-            sendIfPreCallback= self.updateGUI,
             infoBoxAttribute='infoBox'
         )
 
-        
-
-        # ADVANCE BOX
-
-        self.advancedSettings = AdvancedSettings(
-            widget=self.controlArea,
-            master=self,
-            callback=self.toggle_AdvancedSettingg
-        )
-        
-        self.advancedSettings.draw()
-
-        advanceBox = OWGUI.widgetBox(
-            widget=self.controlArea,
-            box=True,
-            orientation='vertical',
-        )
-    
-        OWGUI.comboBox(
-            widget              = advanceBox,
-            master              = self,
-            value               = 'language',
-            items               = ['English', 'French', 'German', 'Spanish', 'Italian', 'Dutch'],
-            sendSelectedValue   = True,
-            orientation         = 'horizontal',
-            label               = u'Language:',
-            labelWidth          = 160,
-            callback            = self.sendButton.settingsChanged,
-            tooltip             = (
-                    u"Select language."
-            ),
-        )
-
-
-        
+     
         # CONFIG BOXES
-
-        self.advancedSettings.advancedWidgets.append(advanceBox)
-        self.advancedSettings.advancedWidgetsAppendSeparator()
-        
+ 
         optionsBox = OWGUI.widgetBox(self.controlArea, 'Options')
 
         self.twitterBox = OWGUI.widgetBox(self.controlArea, 'Twitter')
@@ -170,6 +130,21 @@ class OWWebSearch(OWWidget):
             callback            = self.set_service_box_visibility,
             tooltip             = (
                     u"Select a service."
+            ),
+        )
+
+        OWGUI.comboBox(
+            widget              = optionsBox,
+            master              = self,
+            value               = 'language',
+            items               = ['English', 'French', 'German', 'Spanish', 'Italian', 'Dutch'],
+            sendSelectedValue   = True,
+            orientation         = 'horizontal',
+            label               = u'Language:',
+            labelWidth          = 160,
+            callback            = self.sendButton.settingsChanged,
+            tooltip             = (
+                    u"Select language."
             ),
         )
 
@@ -203,6 +178,7 @@ class OWWebSearch(OWWidget):
             master=self, 
             value='nb_tweet',
             label='Number of tweets:',
+            labelWidth=160,
             tooltip='Select a number of tweet.',
             callback= self.sendButton.settingsChanged,
             min= 1, 
@@ -239,7 +215,7 @@ class OWWebSearch(OWWidget):
             ),
         )
 
-        self.twitterLicenseBox = OWGUI.widgetBox(self.twitterBox, False)
+        self.twitterLicenseBox = OWGUI.indentedBox(self.twitterBox, sep=20)
 
         OWGUI.lineEdit(
             widget=self.twitterLicenseBox,
@@ -248,7 +224,7 @@ class OWWebSearch(OWWidget):
             label=u'Consumer key: ',
             orientation='horizontal',
             callback=self.sendButton.settingsChanged,
-            labelWidth=160,
+            labelWidth=140,
             tooltip=(
                     u"Your twitter Consumer key."
             ),
@@ -261,7 +237,7 @@ class OWWebSearch(OWWidget):
             label=u'Consumer secret: ',
             orientation='horizontal',
             callback=self.sendButton.settingsChanged,
-            labelWidth=160,
+            labelWidth=140,
             tooltip=(
                     u"Your private twitter license key."
             ),
@@ -274,7 +250,7 @@ class OWWebSearch(OWWidget):
             label=u'Access token: ',
             orientation='horizontal',
             callback=self.sendButton.settingsChanged,
-            labelWidth=160,
+            labelWidth=140,
             tooltip=(
                     u"Your private twitter Access token."
             ),
@@ -287,7 +263,7 @@ class OWWebSearch(OWWidget):
             label=u'Access token secret: ',
             orientation='horizontal',
             callback=self.sendButton.settingsChanged,
-            labelWidth=160,
+            labelWidth=140,
             tooltip=(
                     u"Your private twitter access token secret."
             ),
@@ -334,6 +310,7 @@ class OWWebSearch(OWWidget):
             master=self, 
             value='nb_bing_entry',
             label='Number of results:',
+            labelWidth=160,
             tooltip='Select a number of results.',
             callback= self.sendButton.settingsChanged,
             min= 1, 
@@ -530,21 +507,6 @@ class OWWebSearch(OWWidget):
 
     # SET CHANGE IN WIDGET
 
-    def updateGUI(self):
-        """Update GUI state"""
-        if self.displayAdvancedSettings:
-            self.advancedSettings.setVisible(True)
-        else:
-            self.advancedSettings.setVisible(False)
-
-        
-    def toggle_AdvancedSettingg(self):
-        if self.displayAdvancedSettings:
-            self.advancedSettings.setVisible(True)
-        else:
-            self.advancedSettings.setVisible(False)
-
-
     def set_service_box_visibility(self):
         self.sendButton.settingsChanged()
         
@@ -560,7 +522,6 @@ class OWWebSearch(OWWidget):
         elif self.service == u'Bing':
             self.bingBox.setVisible(True)
 
-        self.updateGUI()
 
     def changeTwitterLicenseKeyBox(self):
 
