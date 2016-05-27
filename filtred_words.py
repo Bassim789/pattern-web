@@ -7,9 +7,9 @@ def main():
     unsignifiant = []
     
     unsignifiant_fr = [
-        'de', 'des', 'du', 'un', 'une', 'le', 'la', 'les', 'd', 'l', 'a', 'ou', 'dans', 'par', 'ce', 'cette'
+        'de', 'des', 'du', 'un', 'une', 'le', 'la', 'les', 'd', 'l', 'a', 'ou', 'dans', 'par', 'ce', 'cette',
         '-', 'et', '', 'en', 'au', 'sur', 'pour', u'\xe0',
-        'est',
+        'est', 'se', 'qui', 'plus', 'avec', 's', 'entre', 'son', 'elle', 'il', 'que', 'ne', 'sont', 'sa', 'ses',
         '!', '.', '?', ','
     ]
     
