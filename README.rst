@@ -19,18 +19,16 @@ Depending on the service, the output segmentation has the following annotations 
 * Wikipedia : source and search.
 * Bing : url, source, search and title.
 
-The interface of WebSearch adapts itself according to the selected service.
-
 2.1 Interface
 ~~~~~~~~~~~~~~~~~~
-As stated before, the interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
+The WebSearch interface is dependent of the selected service. In case Twitter is chosen, the interface looks like this :
 
 .. image:: img/WebSearch_Twitter.png
 *Figure 1 : WebSearch widget with Twitter selected*
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
-The **Language** field enables the user to choose the language of the retrieved data between english, french, german, spanish, italian and dutch  (by default : english). 
+The **Language** field enables the user to choose the language of the retrieved data from english, french, german, spanish, italian and dutch  (by default : english). 
 
 The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English.
 
