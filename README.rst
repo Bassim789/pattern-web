@@ -28,13 +28,13 @@ The WebSearch interface is dependent of the selected service. In case Twitter is
 
 The **Service** field allows the user to select a search engine (Twitter, Wikipedia or Bing).
 
-The **Language** field enables the user to choose the language of the retrieved data from english, french, german, spanish, italian and dutch  (by default : english). 
+The **Language** field enables users to choose the language of the retrieved data from English, French, German, Spanish, Italian and Dutch  (by default : English). 
 
 The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English.
 
 By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
 
-Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case any matches the request). For more informations about the **Info** box : read `3. Messages`_.
+Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case that there are segments matching the request). For more informations about the **Info** box : read `3. Messages`_.
 
 Depending on which search engine is selected, different options appear on the interface. These specific aspects are stated below.
 
