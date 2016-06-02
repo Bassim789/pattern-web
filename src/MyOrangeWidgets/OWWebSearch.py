@@ -1,5 +1,5 @@
 """
-<name>WebSearch</name>
+<name>Web Search</name>
 <description>Get corpus from Wikipedia, Twitter and Bing</description>
 <icon>icons/icon_WebSearch_transpa.png</icon>
 <priority>11</priority> 
@@ -15,7 +15,6 @@ from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
 from _textable.widgets.TextableUtils import *
-
 
 class OWWebSearch(OWWidget):
     """Orange widget to get corpus from pattern web"""
@@ -147,7 +146,14 @@ class OWWebSearch(OWWidget):
                     u"Select language."
             ),
         )
-
+        
+        #space
+        OWGUI.separator(
+        	widget 				= optionsBox, 
+        	width 				= 0, 
+        	height				= 0.05,
+        )
+        
         OWGUI.lineEdit(
             widget              = optionsBox,
             master              = self,
@@ -156,6 +162,13 @@ class OWWebSearch(OWWidget):
             label               = u'Query:',
             callback            = self.sendButton.settingsChanged,
             labelWidth          = 160,
+        )
+
+        #space
+        OWGUI.separator(
+        	widget 				= optionsBox, 
+        	width 				= 0, 
+        	height				= 1,
         )
         
         segment_label_input = OWGUI.lineEdit(
@@ -198,7 +211,12 @@ class OWWebSearch(OWWidget):
             ),
         )
 
-
+		#space
+        OWGUI.separator(
+        	widget 				= self.twitterBox, 
+        	width 				= 0, 
+        	height				= 4,
+        )
 
 
         # TWITTER LICENSE KEY BOX
@@ -431,6 +449,12 @@ class OWWebSearch(OWWidget):
 
         # Clear created Inputs
         self.clearCreatedInputs()
+
+        # Check that label is not empty...
+        if not self.segment_label:
+            self.infoBox.noDataSent(warning=u'No label was provided.')
+            self.send(u'Text data', None, self)
+            return False
         
         if self.service == u'Twitter':
         	try:
@@ -467,11 +491,7 @@ class OWWebSearch(OWWidget):
                 self.nb_bing_entry
             )
 
-        # Check that label is not empty...
-        if not self.segment_label:
-            self.infoBox.noDataSent(warning=u'No label was provided.')
-            self.send(u'Text data', None, self)
-            return False
+        
 
         if len(createdInputs) == 0:
         	self.infoBox.noDataSent('\nPlease try to change query or settings.')
