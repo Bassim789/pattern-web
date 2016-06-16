@@ -57,7 +57,7 @@ class OWWebSearch(OWWidget):
 
         # Settings and other attribute initializations...
 
-        self.segment_label = u'WebSearch_data'
+        self.segment_label = u'search_results'
         self.nb_tweet = 50
         self.include_RT = False
         self.word_to_search = ''
