@@ -1,5 +1,5 @@
 ##################################
-WebSearch
+Web Search
 ##################################
 .. image:: src/MyOrangeWidgets/icons/icon_WebSearch_transpa_54.png 
 Import Twitter, Wikipedia and Bing data.
@@ -8,11 +8,15 @@ Import Twitter, Wikipedia and Bing data.
 **************
 Inputs : None
 
-Outputs : WebSearch_data (by default)
+Outputs : 
+
+* ``search_results``
+
+  Segmentation containing the search results
 
 2. Description
 **************
-The WebSearch widget is designed for the Orange Canvas environment to generate textual data retrieved from Twitter, Wikipedia or Bing. 
+The Web Search widget is designed for the Orange Canvas environment to generate textual data retrieved from Twitter, Wikipedia or Bing. 
 Depending on the service, the output segmentation has the following annotations with keys :
 
 * Twitter : date, source, search, url and author.
@@ -30,9 +34,9 @@ The **Service** field allows the user to select a search engine (Twitter, Wikipe
 
 The **Language** field enables users to choose the language of the retrieved data from English, French, German, Spanish, Italian and Dutch  (by default : English). 
 
-The **Query** field contains the searched word(s) on the chosen web engine. By default, the language is set to English.
+The **Query** field contains the searched word(s) on the chosen web engine.
 
-By default, the **Output segmentation label** is named `WebSearch_data`. Users can however modify it if needed. 
+By default, the **Output segmentation label** is `search_results`. Users can however modify it if needed. 
 
 Clicking on the **Send** button executes the request. The **Info** box above indicates the number of segments sent (in case that there are segments matching the request). For more informations about the **Info** box : read `3. Messages`_.
 
@@ -42,7 +46,9 @@ Depending on which search engine is selected, different options appear on the in
 ~~~~~~~~~~~~~~~~~~
 The **Number of tweets** field allows users to retrieve up to 3000 tweets, in case the request matches as many tweets as required by the entered number.  
 
-When **Include retweets** is checked, tweets starting with 'RT' are filtered out in order to only send "original" tweets to the output. It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. 
+By default, tweets starting with 'RT' are filtered out in order to only send "original" tweets to the output. When **Include retweets** is checked, tweets starting with 'RT' are not filtered out.
+
+It is worth noting that the number of segments in the output may, in somes cases, actually be lower than the value entered in **Number of tweets**. *[svp expliquer cette dernière remarque dans le contexte spécifique de **Include retweets** (plutôt que **Number of Tweets**)]*
 
 Twitter allows their users to own a license key. To unfold the license key parameters, tick the **Use license key** checkbox. Four keys (which can be found under "Keys and Access Tokens" in user's account) are needed. Visit apps.twitter.com to learn more. 
 
@@ -71,9 +77,6 @@ The **Number of results** field allows users to retrieve up to 1000 Bing results
 3.1 Information
 ~~~~~~~~~~~
 
-*Setting changed. Click send.*
-    This message informs the user that the settings have been changed and are ready to be sent. 
-
 *Data correctly sent to output: <n> segments.*
     The data, containing <n> number of segments, has been sent to the output correctly.
 
@@ -98,6 +101,7 @@ The **Number of results** field allows users to retrieve up to 1000 Bing results
 
 3.3 Errors
 ~~~~~~~~~~~
+
 *Wrong keys for Twitter api.*
     The entered values don't match any existing key.
 

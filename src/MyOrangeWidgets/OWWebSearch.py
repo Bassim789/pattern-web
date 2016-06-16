@@ -10,7 +10,8 @@ __version__ = '0.0.2'
 import Orange
 from OWWidget import *
 import OWGUI
-from pattern.web import Twitter, Wikipedia, Bing, SEARCH, HTTP401Authentication, HTTP400BadRequest
+from pattern.web import Twitter, Wikipedia, Bing, SEARCH,    \
+                        HTTP401Authentication, HTTP400BadRequest, SearchEngineLimitError
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
@@ -56,7 +57,7 @@ class OWWebSearch(OWWidget):
 
         # Settings and other attribute initializations...
 
-        self.segment_label = u'WebSearch_data'
+        self.segment_label = u'search_results'
         self.nb_tweet = 50
         self.include_RT = False
         self.word_to_search = ''
@@ -149,9 +150,9 @@ class OWWebSearch(OWWidget):
         
         #space
         OWGUI.separator(
-        	widget 				= optionsBox, 
-        	width 				= 0, 
-        	height				= 0.05,
+            widget              = optionsBox, 
+            width               = 0, 
+            height              = 0.05,
         )
         
         OWGUI.lineEdit(
@@ -166,9 +167,9 @@ class OWWebSearch(OWWidget):
 
         #space
         OWGUI.separator(
-        	widget 				= optionsBox, 
-        	width 				= 0, 
-        	height				= 1,
+            widget              = optionsBox, 
+            width               = 0, 
+            height              = 1,
         )
         
         segment_label_input = OWGUI.lineEdit(
@@ -211,11 +212,11 @@ class OWWebSearch(OWWidget):
             ),
         )
 
-		#space
+        #space
         OWGUI.separator(
-        	widget 				= self.twitterBox, 
-        	width 				= 0, 
-        	height				= 4,
+            widget              = self.twitterBox, 
+            width               = 0, 
+            height              = 4,
         )
 
 
@@ -352,12 +353,12 @@ class OWWebSearch(OWWidget):
 
     def get_tweets(self, search, nb, include_RT, useKey, keys):
 
-    	if not useKey:
-    		keys = None
+        if not useKey:
+            keys = None
 
         twitter = Twitter(
-        	language=self.dico_lang[self.language],
-        	license=keys
+            language=self.dico_lang[self.language],
+            license=keys
         )
 
         tweets = []
@@ -457,25 +458,29 @@ class OWWebSearch(OWWidget):
             return False
         
         if self.service == u'Twitter':
-        	try:
-	            createdInputs = self.get_tweets(
-	                self.word_to_search,
-	                self.nb_tweet,
-	                self.include_RT,
-	                self.useTwitterLicenseKey,
-	                (
-	                	self.twitterLicenseKeysConsumerKey,
-	                	self.twitterLicenseKeysConsumerSecret,
-	                	(
-	                		self.twitterLicenseKeysAccessToken,
-	                		self.twitterLicenseKeysAccessTokenSecret
-	                	)
-	                )
-	            )
-	        except (HTTP401Authentication, HTTP400BadRequest):
-	        	self.infoBox.noDataSent(error = u'Wrong keys for Twitter api.')
-	        	self.send(u'Text data', None, self)
-	        	return False
+            try:
+                createdInputs = self.get_tweets(
+                    self.word_to_search,
+                    self.nb_tweet,
+                    self.include_RT,
+                    self.useTwitterLicenseKey,
+                    (
+                        self.twitterLicenseKeysConsumerKey,
+                        self.twitterLicenseKeysConsumerSecret,
+                        (
+                            self.twitterLicenseKeysAccessToken,
+                            self.twitterLicenseKeysAccessTokenSecret
+                        )
+                    )
+                )
+            except (HTTP401Authentication, HTTP400BadRequest):
+                self.infoBox.noDataSent(error = u'Wrong keys for Twitter api.')
+                self.send(u'Text data', None, self)
+                return False
+            except SearchEngineLimitError:
+                self.infoBox.noDataSent(error = u'Twitter search limit exceeded.')
+                self.send(u'Text data', None, self)
+                return False
 
 
         elif self.service == u'Wikipedia':
@@ -494,11 +499,11 @@ class OWWebSearch(OWWidget):
         
 
         if len(createdInputs) == 0:
-        	self.infoBox.noDataSent('\nPlease try to change query or settings.')
-        	self.send(u'Text data', None, self)
-	        return False
+            self.infoBox.noDataSent('\nPlease try to change query or settings.')
+            self.send(u'Text data', None, self)
+            return False
 
-	    # Initialize progress bar
+        # Initialize progress bar
         progressBar = OWGUI.ProgressBar(
             self, 
             iterations=50
@@ -545,12 +550,12 @@ class OWWebSearch(OWWidget):
 
     def changeTwitterLicenseKeyBox(self):
 
-    	self.sendButton.settingsChanged()
+        self.sendButton.settingsChanged()
 
-    	if self.useTwitterLicenseKey:
+        if self.useTwitterLicenseKey:
             self.twitterLicenseBox.setVisible(True)
         else:
-        	self.twitterLicenseBox.setVisible(False)
+            self.twitterLicenseBox.setVisible(False)
 
 
      
