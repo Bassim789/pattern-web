@@ -10,7 +10,8 @@ __version__ = '0.0.2'
 import Orange
 from OWWidget import *
 import OWGUI
-from pattern.web import Twitter, Wikipedia, Bing, SEARCH, HTTP401Authentication, HTTP400BadRequest
+from pattern.web import Twitter, Wikipedia, Bing, SEARCH,  \
+                        HTTP401Authentication, HTTP400BadRequest, SearchEngineLimitError
 from _textable.widgets.LTTL.Segmentation import Segmentation
 from _textable.widgets.LTTL.Input import Input
 from _textable.widgets.LTTL.Segmenter import Segmenter
